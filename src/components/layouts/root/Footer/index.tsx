@@ -20,7 +20,7 @@ export default function Footer() {
       <div className={cn("container py-10 grid gap-8 md:grid-cols-3")}>
         <div className={cn("space-y-3")}>
           <Logo />
-          <p className={cn("text-sm text-primary-foreground/80 max-w-sm")}>
+          <p className={cn("text-base text-primary-foreground/80 max-w-sm")}>
             {FOOTER_DESCRIPTION}
           </p>
         </div>
@@ -33,7 +33,7 @@ export default function Footer() {
                 key={index}
                 href={link.href}
                 className={cn(
-                  "text-sm text-primary-foreground/80 hover:opacity-90"
+                  "text-base text-primary-foreground/80 hover:opacity-90"
                 )}
               >
                 {link.label}
@@ -46,14 +46,14 @@ export default function Footer() {
           <div className={cn("font-semibold")}>Kontak</div>
           <div
             className={cn(
-              "flex items-center gap-2 text-sm text-primary-foreground/80"
+              "flex items-center gap-2 text-base text-primary-foreground/80"
             )}
           >
             <Mail className="size-4" /> {FOOTER_CONTACT.email}
           </div>
           <div
             className={cn(
-              "flex items-center gap-2 text-sm text-primary-foreground/80"
+              "flex items-center gap-2 text-base text-primary-foreground/80"
             )}
           >
             <Phone className="size-4" /> {FOOTER_CONTACT.phone}
@@ -76,7 +76,7 @@ export default function Footer() {
       <div className={cn("border-t border-primary-foreground/20")}>
         <div
           className={cn(
-            "container py-6 text-xs text-primary-foreground/80 flex flex-col md:flex-row items-center justify-between gap-3"
+            "container py-6 text-sm text-primary-foreground/80 flex flex-col md:flex-row items-center justify-between gap-3"
           )}
         >
           <div>
