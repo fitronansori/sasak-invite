@@ -21,7 +21,7 @@ export default function ShowcaseCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {SHOWCASE_ITEMS.map(({ icon: Icon, label, description }) => (
             <div key={label} className="rounded-xl border p-4">
               <div className="flex items-center gap-2">

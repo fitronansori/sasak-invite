@@ -1,4 +1,8 @@
 import Hero from "@/components/layouts/root/Hero";
+import Templates from "@/components/layouts/root/Templates";
+import Features from "@/components/layouts/root/Features";
+import Pricing from "@/components/layouts/root/Pricing";
+import FAQ from "@/components/layouts/root/FAQ";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,10 +15,10 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <h1>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque corrupti
-        soluta possimus quos facilis nemo quasi excepturi beatae in blanditiis.
-      </h1>
+      <Templates />
+      <Features />
+      <Pricing />
+      <FAQ />
     </>
   );
 };
