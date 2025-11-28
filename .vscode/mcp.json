@@ -2,9 +2,16 @@
   "servers": {
     "shadcn": {
       "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
       "args": [
-        "shadcn@latest",
-        "mcp"
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-dbd36db1-15b5-4de6-b1db-616c12cf8c95"
       ]
     }
   }
