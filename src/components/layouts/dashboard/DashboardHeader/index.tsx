@@ -1,4 +1,5 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { UserButton } from "@clerk/nextjs";
 
 const DashboardHeader = () => {
   return (
@@ -6,9 +7,7 @@ const DashboardHeader = () => {
       <div className="flex h-14 items-center justify-between px-4">
         <SidebarTrigger />
 
-        <div className="flex items-center justify-center size-8 text-background rounded-full bg-primary">
-          p
-        </div>
+        <UserButton />
       </div>
     </header>
   );

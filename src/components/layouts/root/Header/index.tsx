@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import MobileMenu from "./MobileMenu";
 import { NAV_LINKS } from "@/constants/navlinks";
 import Logo from "@/components/common/Logo";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Header() {
+export default async function Header() {
+  const user = await currentUser();
+
   return (
     <header
       className={cn(
@@ -30,10 +33,18 @@ export default function Header() {
         </nav>
 
         <div className={cn("flex items-center gap-2")}>
-          <MobileMenu />
-          <div className={cn("hidden md:flex items-center gap-2")}>
-            <Button variant="ghost">Masuk</Button>
-            <Button>Daftar</Button>
+          <MobileMenu isAuthenticated={!!user} />
+
+          <div className={cn("hidden md:flex items-center")}>
+            {user ? (
+              <Button size={"lg"} asChild>
+                <Link href={"/dashboard"}>Dashboard</Link>
+              </Button>
+            ) : (
+              <Button size={"lg"} asChild>
+                <Link href={"/sign-in"}>Masuk</Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>

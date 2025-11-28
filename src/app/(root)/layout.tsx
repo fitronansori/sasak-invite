@@ -1,5 +1,5 @@
+import Footer from "@/components/layouts/root/Footer";
 import Header from "@/components/layouts/root/Header";
-import { Footer } from "react-day-picker";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (

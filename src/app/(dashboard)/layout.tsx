@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/layouts/dashboard/AppSidebar";
-import DashboardHeader from "@/components/layouts/dashboard/Header";
+import DashboardHeader from "@/components/layouts/dashboard/DashboardHeader";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Metadata } from "next";
 import { cookies } from "next/headers";

@@ -14,7 +14,11 @@ import {
 } from "@/components/ui/sheet";
 import { NAV_LINKS } from "@/constants/navlinks";
 
-const MobileMenu = () => {
+type MobileMenuProps = {
+  isAuthenticated: boolean;
+};
+
+const MobileMenu = ({ isAuthenticated }: MobileMenuProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -49,13 +53,18 @@ const MobileMenu = () => {
             </Link>
           ))}
 
-          <Link href={"/"} className={cn("w-full hover:text-primary")}>
-            Masuk
-          </Link>
-
-          <Link href={"/"} className={cn("w-full hover:text-primary")}>
-            Daftar
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              href={"/dashboard"}
+              className={cn("w-full hover:text-primary")}
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <Link href={"/sign-in"} className={cn("w-full hover:text-primary")}>
+              Masuk
+            </Link>
+          )}
         </nav>
       </SheetContent>
     </Sheet>
