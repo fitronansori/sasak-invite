@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/layouts/dashboard/AppSidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import DashboardHeader from "@/components/layouts/dashboard/Header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 
@@ -14,10 +15,12 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        {children}
-      </main>
+      <SidebarInset>
+        <main>
+          <DashboardHeader />
+          {children}
+        </main>
+      </SidebarInset>
     </SidebarProvider>
   );
 };
