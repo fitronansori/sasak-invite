@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -14,9 +8,84 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Invite {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  createdAt DateTime @default(now())
-  used      Boolean  @default(false)
+model Category {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   @unique
+  description String?
+  slug        String   @unique
+  image       String?
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  
+  templates   Template[]
+  
+  @@map("categories")
+}
+
+model Template {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  description    String?
+  price          Int
+  discount_price Int?
+  image          String?
+  thumbnail      String?
+  preview_images String[]
+  lynk_id_url    String
+  demo_url       String?
+  category_id    String   @db.ObjectId
+  is_active      Boolean  @default(true)
+  is_featured    Boolean  @default(false)
+  tags           String[]
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  
+  category    Category    @relation(fields: [category_id], references: [id])
+  order_items OrderItem[]
+  
+  @@map("templates")
+}
+
+model Order {
+  id                     String      @id @default(auto()) @map("_id") @db.ObjectId
+  order_number           String      @unique
+  customer_name          String
+  customer_email         String
+  customer_phone         String?
+  total_amount           Int
+  status                 OrderStatus @default(PENDING)
+  payment_method         String?
+  payment_proof          String?
+  lynk_id_transaction_id String?
+  notes                  String?
+  created_at             DateTime    @default(now())
+  updated_at             DateTime    @updatedAt
+  
+  order_items OrderItem[]
+  
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  order_id    String   @db.ObjectId
+  template_id String   @db.ObjectId
+  price       Int
+  quantity    Int      @default(1)
+  created_at  DateTime @default(now())
+  
+  order    Order    @relation(fields: [order_id], references: [id])
+  template Template @relation(fields: [template_id], references: [id])
+  
+  @@map("order_items")
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  PAID
+  COMPLETED
+  CANCELLED
+  REFUNDED
 }
