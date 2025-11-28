@@ -19,7 +19,9 @@ export default function Footer() {
     >
       <div className={cn("container py-10 grid gap-8 md:grid-cols-3")}>
         <div className={cn("space-y-3")}>
-          <Logo />
+          <div className={cn("bg-white rounded-full inline-block py-2 px-4")}>
+            <Logo className="text-foreground" />
+          </div>
           <p className={cn("text-base text-primary-foreground/80 max-w-sm")}>
             {FOOTER_DESCRIPTION}
           </p>
