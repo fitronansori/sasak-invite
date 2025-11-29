@@ -7,6 +7,9 @@ import {
   FileText,
   Plus,
   TrendingUp,
+  CheckCircle,
+  XCircle,
+  Star,
 } from "lucide-react";
 
 export const dashboardMenuItems = [
@@ -122,5 +125,39 @@ export const QUICK_ACTIONS: QuickAction[] = [
     href: "/dashboard/analytics",
     color: "text-orange-600",
     bgColor: "bg-orange-50",
+  },
+];
+
+export type TemplateStatConfig = {
+  title: string;
+  icon: ComponentType<{ className?: string }>;
+  color: string;
+  bgColor: string;
+};
+
+export const TEMPLATE_STATS_CONFIG: TemplateStatConfig[] = [
+  {
+    title: "Total Template",
+    icon: FileText,
+    color: "text-blue-600",
+    bgColor: "bg-blue-100",
+  },
+  {
+    title: "Aktif",
+    icon: CheckCircle,
+    color: "text-green-600",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "Nonaktif",
+    icon: XCircle,
+    color: "text-gray-600",
+    bgColor: "bg-gray-100",
+  },
+  {
+    title: "Unggulan",
+    icon: Star,
+    color: "text-yellow-600",
+    bgColor: "bg-yellow-100",
   },
 ];
