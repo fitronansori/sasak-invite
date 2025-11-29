@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
+
 import { Menu } from "lucide-react";
+
 import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetTrigger,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
+  SheetTrigger,
 } from "@/components/ui/sheet";
+
 import { NAV_LINKS } from "@/constants/navlinks";
 
 type MobileMenuProps = {
@@ -40,14 +44,14 @@ const MobileMenu = ({ isAuthenticated }: MobileMenuProps) => {
 
         <nav
           className={cn(
-            "h-full flex flex-col items-center justify-center gap-6 text-xl font-semibold text-center"
+            "flex h-full flex-col items-center justify-center gap-6 text-center text-xl font-semibold"
           )}
         >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={cn("w-full hover:text-primary")}
+              className={cn("hover:text-primary w-full")}
             >
               {link.label}
             </Link>
@@ -56,12 +60,12 @@ const MobileMenu = ({ isAuthenticated }: MobileMenuProps) => {
           {isAuthenticated ? (
             <Link
               href={"/dashboard"}
-              className={cn("w-full hover:text-primary")}
+              className={cn("hover:text-primary w-full")}
             >
               Dashboard
             </Link>
           ) : (
-            <Link href={"/sign-in"} className={cn("w-full hover:text-primary")}>
+            <Link href={"/sign-in"} className={cn("hover:text-primary w-full")}>
               Masuk
             </Link>
           )}

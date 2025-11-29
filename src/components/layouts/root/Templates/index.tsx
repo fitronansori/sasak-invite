@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { Eye } from "lucide-react";
+
 import SectionHeader from "@/components/common/SectionHeader";
 import TemplateCard from "@/components/layouts/root/Templates/TemplateCard";
+import { Button } from "@/components/ui/button";
 
 const templates = [
   { name: "Elegan", color: "from-primary/20 to-chart-4/30" },
@@ -20,7 +21,7 @@ export default function Templates() {
           title="Pilih Template untuk Setiap Momen"
           description="Koleksi template siap pakai yang dapat disesuaikan. Cocok untuk pernikahan, ulang tahun, dan berbagai acara."
           action={
-            <Button className="w-full md:w-auto md:mt-0 mt-2">
+            <Button className="mt-2 w-full md:mt-0 md:w-auto">
               <Eye className="size-4" /> Lihat Semua
             </Button>
           }

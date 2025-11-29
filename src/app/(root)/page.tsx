@@ -1,9 +1,10 @@
-import Hero from "@/components/layouts/root/Hero";
-import Templates from "@/components/layouts/root/Templates";
-import Features from "@/components/layouts/root/Features";
-import Pricing from "@/components/layouts/root/Pricing";
-import FAQ from "@/components/layouts/root/FAQ";
 import type { Metadata } from "next";
+
+import FAQ from "@/components/layouts/root/FAQ";
+import Features from "@/components/layouts/root/Features";
+import Hero from "@/components/layouts/root/Hero";
+import Pricing from "@/components/layouts/root/Pricing";
+import Templates from "@/components/layouts/root/Templates";
 
 export const metadata: Metadata = {
   title: "Sasak Invite — Platform Undangan Digital Modern & Elegan",

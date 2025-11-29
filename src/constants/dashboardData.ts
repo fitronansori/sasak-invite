@@ -1,15 +1,16 @@
 import type { ComponentType } from "react";
+
 import {
+  BarChart3,
+  CheckCircle,
+  FileText,
   Home,
   LayoutTemplate,
-  ShoppingBag,
-  BarChart3,
-  FileText,
   Plus,
-  TrendingUp,
-  CheckCircle,
-  XCircle,
+  ShoppingBag,
   Star,
+  TrendingUp,
+  XCircle,
 } from "lucide-react";
 
 export const dashboardMenuItems = [

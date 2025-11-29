@@ -75,8 +75,8 @@ export function TemplatesPagination({
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+    <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className="text-muted-foreground flex items-center gap-2 text-sm">
         <span>
           Menampilkan {startItem}-{endItem} dari {totalItems} template
         </span>
@@ -84,7 +84,7 @@ export function TemplatesPagination({
           value={pageSize.toString()}
           onValueChange={(value) => onPageSizeChange(Number(value))}
         >
-          <SelectTrigger className="w-20 h-8">
+          <SelectTrigger className="h-8 w-20">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

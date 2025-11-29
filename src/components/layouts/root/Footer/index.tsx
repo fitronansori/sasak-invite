@@ -1,41 +1,45 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import Logo from "@/components/common/Logo";
-import { NAV_LINKS } from "@/constants/navlinks";
+
 import { Mail, Phone } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+import Logo from "@/components/common/Logo";
+
 import {
   FOOTER_CONTACT,
   FOOTER_DESCRIPTION,
-  FOOTER_SOCIALS,
   FOOTER_LEGAL,
+  FOOTER_SOCIALS,
 } from "@/constants/data";
+import { NAV_LINKS } from "@/constants/navlinks";
 
 export default function Footer() {
   return (
     <footer
       className={cn(
-        "border-t border-primary-foreground/20 bg-primary text-primary-foreground"
+        "border-primary-foreground/20 bg-primary text-primary-foreground border-t"
       )}
     >
-      <div className={cn("container py-10 grid gap-8 md:grid-cols-3")}>
+      <div className={cn("container grid gap-8 py-10 md:grid-cols-3")}>
         <div className={cn("space-y-3")}>
-          <div className={cn("bg-white rounded-full inline-block py-2 px-4")}>
+          <div className={cn("inline-block rounded-full bg-white px-4 py-2")}>
             <Logo className="text-foreground" />
           </div>
-          <p className={cn("text-base text-primary-foreground/80 max-w-sm")}>
+          <p className={cn("text-primary-foreground/80 max-w-sm text-base")}>
             {FOOTER_DESCRIPTION}
           </p>
         </div>
 
         <div>
-          <div className={cn("font-semibold mb-3")}>Tautan Cepat</div>
+          <div className={cn("mb-3 font-semibold")}>Tautan Cepat</div>
           <div className={cn("grid grid-cols-2 gap-2")}>
             {NAV_LINKS.map((link, index) => (
               <Link
                 key={index}
                 href={link.href}
                 className={cn(
-                  "text-base text-primary-foreground/80 hover:opacity-90"
+                  "text-primary-foreground/80 text-base hover:opacity-90"
                 )}
               >
                 {link.label}
@@ -48,14 +52,14 @@ export default function Footer() {
           <div className={cn("font-semibold")}>Kontak</div>
           <div
             className={cn(
-              "flex items-center gap-2 text-base text-primary-foreground/80"
+              "text-primary-foreground/80 flex items-center gap-2 text-base"
             )}
           >
             <Mail className="size-4" /> {FOOTER_CONTACT.email}
           </div>
           <div
             className={cn(
-              "flex items-center gap-2 text-base text-primary-foreground/80"
+              "text-primary-foreground/80 flex items-center gap-2 text-base"
             )}
           >
             <Phone className="size-4" /> {FOOTER_CONTACT.phone}
@@ -66,7 +70,7 @@ export default function Footer() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className={cn("hover:opacity-90 text-primary-foreground")}
+                className={cn("text-primary-foreground hover:opacity-90")}
               >
                 <Icon className="size-5" />
               </Link>
@@ -75,10 +79,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className={cn("border-t border-primary-foreground/20")}>
+      <div className={cn("border-primary-foreground/20 border-t")}>
         <div
           className={cn(
-            "container py-6 text-sm text-primary-foreground/80 flex flex-col md:flex-row items-center justify-between gap-3"
+            "text-primary-foreground/80 container flex flex-col items-center justify-between gap-3 py-6 text-sm md:flex-row"
           )}
         >
           <div>

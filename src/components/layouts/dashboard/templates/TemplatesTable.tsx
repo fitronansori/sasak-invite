@@ -1,16 +1,30 @@
 "use client";
 
 import { useState } from "react";
+
 import Image from "next/image";
-import { toast } from "sonner";
+
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+  ExternalLink,
+  Eye,
+  MoreHorizontal,
+  Pencil,
+  Power,
+  Star,
+  Trash2,
+} from "lucide-react";
+import { toast } from "sonner";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,31 +36,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import {
-  Eye,
-  MoreHorizontal,
-  Pencil,
-  Trash2,
-  Star,
-  Power,
-  ExternalLink,
-} from "lucide-react";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
 import type { TemplateWithCategory } from "@/actions/dash-template-action";
-import type { CategoryModel } from "@/generated/prisma/models";
 import {
   deleteTemplate,
-  toggleTemplateStatus,
   toggleTemplateFeatured,
+  toggleTemplateStatus,
 } from "@/actions/dash-template-action";
+import type { CategoryModel } from "@/generated/prisma/models";
+
 import { EditTemplateDialog } from "./EditTemplateDialog";
 
 type TemplatesTableProps = {
@@ -138,7 +143,7 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
           <TableBody>
             {templates.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={7} className="text-center h-24">
+                <TableCell colSpan={7} className="h-24 text-center">
                   Tidak ada template ditemukan
                 </TableCell>
               </TableRow>
@@ -146,7 +151,7 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
               templates.map((template) => (
                 <TableRow key={template.id}>
                   <TableCell>
-                    <div className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-100">
+                    <div className="relative h-16 w-16 overflow-hidden rounded-md bg-gray-100">
                       {template.thumbnail || template.image ? (
                         <Image
                           src={template.thumbnail || template.image || ""}
@@ -156,8 +161,8 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-gray-400">
-                          <Eye className="w-6 h-6" />
+                        <div className="flex h-full w-full items-center justify-center text-gray-400">
+                          <Eye className="h-6 w-6" />
                         </div>
                       )}
                     </div>
@@ -166,7 +171,7 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
                     <div className="flex flex-col">
                       <span className="font-medium">{template.title}</span>
                       {template.description && (
-                        <span className="text-sm text-muted-foreground line-clamp-1">
+                        <span className="text-muted-foreground line-clamp-1 text-sm">
                           {template.description}
                         </span>
                       )}
@@ -181,7 +186,7 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
                         {formatPrice(template.price)}
                       </span>
                       {template.discount_price && (
-                        <span className="text-sm text-muted-foreground line-through">
+                        <span className="text-muted-foreground text-sm line-through">
                           {formatPrice(template.discount_price)}
                         </span>
                       )}
@@ -196,7 +201,7 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
                   </TableCell>
                   <TableCell>
                     {template.is_featured && (
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     )}
                   </TableCell>
                   <TableCell className="text-right">

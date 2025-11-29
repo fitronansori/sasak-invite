@@ -1,5 +1,6 @@
 import SectionHeader from "@/components/common/SectionHeader";
 import PricingCard from "@/components/layouts/root/Pricing/PricingCard";
+
 import { PRICING_PLANS } from "@/constants/data";
 
 export default function Pricing() {

@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -21,9 +24,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -32,13 +33,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import type { CategoryModel } from "@/generated/prisma/models";
+import { Textarea } from "@/components/ui/textarea";
+
 import type { TemplateWithCategory } from "@/actions/dash-template-action";
 import { updateTemplate } from "@/actions/dash-template-action";
 import {
-  templateFormSchema,
   type TemplateFormValues,
+  templateFormSchema,
 } from "@/constants/formSchema";
+import type { CategoryModel } from "@/generated/prisma/models";
 
 type EditTemplateDialogProps = {
   template: TemplateWithCategory | null;
@@ -116,7 +119,7 @@ export function EditTemplateDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Edit Template</DialogTitle>
           <DialogDescription>

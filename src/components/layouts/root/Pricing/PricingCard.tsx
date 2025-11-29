@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Check, Globe, MessageSquare, ShoppingCart } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Props = {
   name: string;
@@ -30,21 +31,21 @@ export default function PricingCard({
           <span className="text-xl font-bold">{name}</span>
           <span className="text-2xl font-extrabold">{price}</span>
         </CardTitle>
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <p className="text-muted-foreground text-sm">{description}</p>
       </CardHeader>
       <CardContent>
         <ul className="space-y-2">
           {features.map((f) => (
             <li key={f} className="flex items-start gap-2">
-              <Check className="size-4 mt-0.5 text-primary" />
+              <Check className="text-primary mt-0.5 size-4" />
               <span className="text-sm">{f}</span>
             </li>
           ))}
         </ul>
 
         <div className="mt-4 flex items-start gap-2">
-          <Globe className="size-4 mt-0.5 text-primary" />
-          <span className="text-xs text-muted-foreground">{domainNote}</span>
+          <Globe className="text-primary mt-0.5 size-4" />
+          <span className="text-muted-foreground text-xs">{domainNote}</span>
         </div>
 
         <div className="mt-6">

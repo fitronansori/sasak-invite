@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Plus } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -22,9 +26,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -33,13 +35,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Plus } from "lucide-react";
-import type { CategoryModel } from "@/generated/prisma/models";
+import { Textarea } from "@/components/ui/textarea";
+
 import { createTemplate } from "@/actions/dash-template-action";
 import {
-  templateFormSchema,
   type TemplateFormValues,
+  templateFormSchema,
 } from "@/constants/formSchema";
+import type { CategoryModel } from "@/generated/prisma/models";
 
 type CreateTemplateDialogProps = {
   categories: CategoryModel[];
@@ -97,7 +100,7 @@ export function CreateTemplateDialog({
           Tambah Template
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Buat Template Baru</DialogTitle>
           <DialogDescription>

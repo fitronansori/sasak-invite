@@ -1,12 +1,15 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { TemplatesTable } from "@/components/layouts/dashboard/templates/TemplatesTable";
-import { TemplateStats } from "@/components/layouts/dashboard/templates/TemplateStats";
-import { TemplateFilters } from "@/components/layouts/dashboard/templates/TemplateFilters";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
 import { CreateTemplateDialog } from "@/components/layouts/dashboard/templates/CreateTemplateDialog";
+import { TemplateFilters } from "@/components/layouts/dashboard/templates/TemplateFilters";
+import { TemplateStats } from "@/components/layouts/dashboard/templates/TemplateStats";
 import { TemplatesPagination } from "@/components/layouts/dashboard/templates/TemplatesPagination";
+import { TemplatesTable } from "@/components/layouts/dashboard/templates/TemplatesTable";
+
 import type { TemplateWithCategory } from "@/actions/dash-template-action";
 import type { CategoryModel } from "@/generated/prisma/models";
 
@@ -87,7 +90,7 @@ export function TemplatesDashboard({
         featured={stats.featured}
       />
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <TemplateFilters
           categories={categories}
           onSearchChange={handleSearchChange}

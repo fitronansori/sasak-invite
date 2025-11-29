@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+
+import { cn } from "@/lib/utils";
 
 type LogoProps = {
   className?: string;
@@ -18,7 +19,7 @@ const Logo = ({ className }: LogoProps) => {
         className="size-8 bg-transparent"
       />
 
-      <h1 className="text-xl md:text-2xl font-bold">Sasak Invite</h1>
+      <h1 className="text-xl font-bold md:text-2xl">Sasak Invite</h1>
     </Link>
   );
 };

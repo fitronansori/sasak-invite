@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+
 import type { CategoryModel } from "../generated/prisma/models";
 
 // Get all categories

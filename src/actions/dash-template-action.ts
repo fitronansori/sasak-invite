@@ -1,8 +1,10 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
-import type { TemplateModel, CategoryModel } from "../generated/prisma/models";
 import { revalidatePath } from "next/cache";
+
+import { prisma } from "@/lib/prisma";
+
+import type { CategoryModel, TemplateModel } from "../generated/prisma/models";
 
 // Types
 export type TemplateWithCategory = TemplateModel & {

@@ -1,7 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Eye, ShoppingCart } from "lucide-react";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Eye } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Props = {
   name: string;
@@ -10,7 +11,7 @@ type Props = {
 
 export default function TemplateCard({ name, color }: Props) {
   return (
-    <Card className="overflow-hidden gap-2">
+    <Card className="gap-2 overflow-hidden">
       <CardHeader>
         <CardTitle className="text-lg">{name}</CardTitle>
       </CardHeader>

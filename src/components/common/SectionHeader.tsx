@@ -31,13 +31,27 @@ export default function SectionHeader({
             : "max-w-2xl text-center md:text-left"
         )}
       >
-        <h2 className={cn("text-balance text-2xl font-bold tracking-tight md:text-4xl")}>{title}</h2>
+        <h2
+          className={cn(
+            "text-2xl font-bold tracking-tight text-balance md:text-4xl"
+          )}
+        >
+          {title}
+        </h2>
         {description ? (
-          <p className={cn("mt-2 text-muted-foreground md:text-lg")}>{description}</p>
+          <p className={cn("text-muted-foreground mt-2 md:text-lg")}>
+            {description}
+          </p>
         ) : null}
       </div>
       {action ? (
-        <div className={cn(align === "center" ? "mt-2" : "w-full md:w-auto md:mt-0 mt-2")}>{action}</div>
+        <div
+          className={cn(
+            align === "center" ? "mt-2" : "mt-2 w-full md:mt-0 md:w-auto"
+          )}
+        >
+          {action}
+        </div>
       ) : null}
     </div>
   );

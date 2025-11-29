@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   Sidebar,
   SidebarContent,
@@ -7,8 +9,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
 import { dashboardMenuItems } from "@/constants/dashboardData";
-import Link from "next/link";
 
 export function AppSidebar() {
   return (

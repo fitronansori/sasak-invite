@@ -1,8 +1,9 @@
+import { Metadata } from "next";
+import { cookies } from "next/headers";
+
 import { AppSidebar } from "@/components/layouts/dashboard/AppSidebar";
 import DashboardHeader from "@/components/layouts/dashboard/DashboardHeader";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { Metadata } from "next";
-import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Sasak Invite — Dashboard",

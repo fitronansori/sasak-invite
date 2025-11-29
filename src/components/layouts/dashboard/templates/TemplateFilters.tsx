@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+
+import { Search } from "lucide-react";
+
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -9,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search } from "lucide-react";
+
 import type { CategoryModel } from "@/generated/prisma/models";
 
 type TemplateFiltersProps = {
@@ -33,9 +36,9 @@ export function TemplateFilters({
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4">
+    <div className="flex flex-col gap-4 sm:flex-row">
       <div className="relative flex-1">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform" />
         <Input
           placeholder="Cari template..."
           value={searchQuery}

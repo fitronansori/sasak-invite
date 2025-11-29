@@ -1,5 +1,6 @@
 import SectionHeader from "@/components/common/SectionHeader";
 import FeatureCard from "@/components/layouts/root/Features/FeatureCard";
+
 import { FEATURES } from "@/constants/data";
 
 export default function Features() {

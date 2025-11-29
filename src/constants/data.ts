@@ -1,17 +1,18 @@
 import type { ComponentType } from "react";
+
 import {
-  Gift,
-  Users,
   CalendarDays,
-  Link2,
-  Sparkles,
-  Share2,
-  MapPin,
-  Image,
-  MessageSquare,
-  Globe,
-  Instagram,
   Facebook,
+  Gift,
+  Globe,
+  Image,
+  Instagram,
+  Link2,
+  MapPin,
+  MessageSquare,
+  Share2,
+  Sparkles,
+  Users,
 } from "lucide-react";
 
 export type ShowcaseItem = {

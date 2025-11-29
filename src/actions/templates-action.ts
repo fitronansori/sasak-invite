@@ -1,7 +1,8 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import type { TemplateModel, CategoryModel } from "../generated/prisma/models";
+
+import type { CategoryModel, TemplateModel } from "../generated/prisma/models";
 
 // Menggunakan type yang sudah di-generate Prisma
 export type TemplateWithCategory = TemplateModel & {
