@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentType } from "react";
 
 import {
@@ -41,39 +42,39 @@ export const dashboardMenuItems = [
   },
 ];
 
-export type DashboardStat = {
+export type DashboardStatConfig = {
   title: string;
-  value: string;
   icon: ComponentType<{ className?: string }>;
-  trend: string;
   color: string;
   bgColor: string;
+  getValueKey: (stats: any) => number;
+  getTrend: (stats: any) => string;
 };
 
-export const DASHBOARD_STATS: DashboardStat[] = [
+export const DASHBOARD_STATS_CONFIG: DashboardStatConfig[] = [
   {
     title: "Total Template",
-    value: "24",
     icon: LayoutTemplate,
-    trend: "+3 bulan ini",
     color: "text-blue-600",
     bgColor: "bg-blue-50",
+    getValueKey: (stats) => stats.total_templates,
+    getTrend: (stats) => `${stats.active_templates} aktif`,
   },
   {
     title: "Total Pesanan",
-    value: "156",
     icon: ShoppingBag,
-    trend: "+12 minggu ini",
     color: "text-green-600",
     bgColor: "bg-green-50",
+    getValueKey: (stats) => stats.total_orders,
+    getTrend: (stats) => `${stats.completed_orders} selesai`,
   },
   {
     title: "Total Kategori",
-    value: "8",
     icon: FileText,
-    trend: "+2 baru",
     color: "text-purple-600",
     bgColor: "bg-purple-50",
+    getValueKey: (stats) => stats.total_categories,
+    getTrend: () => "Kategori tersedia",
   },
 ];
 

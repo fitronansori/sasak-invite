@@ -8,9 +8,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { DASHBOARD_STATS, QUICK_ACTIONS } from "@/constants/dashboardData";
+import { getDashboardStats } from "@/actions/dashboard-action";
+import {
+  DASHBOARD_STATS_CONFIG,
+  QUICK_ACTIONS,
+} from "@/constants/dashboardData";
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  const stats = await getDashboardStats();
+
   return (
     <section className="dashboard-container space-y-8">
       {/* Header */}
@@ -23,20 +29,22 @@ const Dashboard = () => {
 
       {/* Statistik Ringkasan */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {DASHBOARD_STATS.map((stat) => (
-          <Card key={stat.title} className="gap-2">
+        {DASHBOARD_STATS_CONFIG.map((config) => (
+          <Card key={config.title} className="gap-2">
             <CardHeader className="flex flex-row items-center justify-between space-y-0">
               <CardTitle className="text-sm font-medium">
-                {stat.title}
+                {config.title}
               </CardTitle>
 
-              <div className={`rounded-lg p-2 ${stat.bgColor}`}>
-                <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <div className={`rounded-lg p-2 ${config.bgColor}`}>
+                <config.icon className={`h-4 w-4 ${config.color}`} />
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <CardDescription>{stat.trend}</CardDescription>
+              <div className="text-2xl font-bold">
+                {config.getValueKey(stats)}
+              </div>
+              <CardDescription>{config.getTrend(stats)}</CardDescription>
             </CardContent>
           </Card>
         ))}
