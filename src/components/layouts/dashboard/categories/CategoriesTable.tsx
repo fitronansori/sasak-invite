@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -116,7 +115,6 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Gambar</TableHead>
               <TableHead>Nama</TableHead>
               <TableHead>Slug</TableHead>
               <TableHead>Deskripsi</TableHead>
@@ -128,24 +126,6 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
           <TableBody>
             {categories.map((category) => (
               <TableRow key={category.id}>
-                <TableCell>
-                  {category.image ? (
-                    <Image
-                      src={category.image}
-                      alt={category.name}
-                      width={40}
-                      height={40}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="rounded-md object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
-                      <span className="text-xs font-medium">
-                        {category.name.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
-                  )}
-                </TableCell>
                 <TableCell className="font-medium">{category.name}</TableCell>
                 <TableCell>
                   <code className="rounded bg-muted px-2 py-1 text-xs">
