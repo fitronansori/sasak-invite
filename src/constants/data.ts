@@ -81,8 +81,8 @@ export const FOOTER_DESCRIPTION =
   "Platform undangan digital modern dan elegan untuk berbagai momen spesial.";
 
 export const FOOTER_CONTACT = {
-  email: "info@sasakinvite.com",
-  phone: "+62 812-3456-7890",
+  email: "sasakinvite@gmail.com",
+  phone: "+62 857-3822-4566",
 };
 
 export type SocialItem = {
@@ -95,7 +95,6 @@ export const FOOTER_SOCIALS: SocialItem[] = [
   { label: "Website", href: "/", icon: Globe },
   { label: "Instagram", href: "/", icon: Instagram },
   { label: "Facebook", href: "/", icon: Facebook },
-  { label: "TikTok", href: "/", icon: MessageSquare },
 ];
 
 export type LegalLink = { label: string; href: string };
