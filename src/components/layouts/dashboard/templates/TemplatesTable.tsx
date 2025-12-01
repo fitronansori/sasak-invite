@@ -51,6 +51,7 @@ import {
   toggleTemplateStatus,
 } from "@/actions/dash-template-action";
 import type { CategoryModel } from "@/generated/prisma/models";
+import { formatCurrency } from "@/lib/utils";
 
 import { EditTemplateDialog } from "./EditTemplateDialog";
 
@@ -117,14 +118,6 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
     }
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
-
   return (
     <>
       <div className="rounded-md border">
@@ -183,11 +176,11 @@ export function TemplatesTable({ templates, categories }: TemplatesTableProps) {
                   <TableCell>
                     <div className="flex flex-col">
                       <span className="font-medium">
-                        {formatPrice(template.price)}
+                        {formatCurrency(template.price)}
                       </span>
                       {template.discount_price && (
                         <span className="text-muted-foreground text-sm line-through">
-                          {formatPrice(template.discount_price)}
+                          {formatCurrency(template.discount_price)}
                         </span>
                       )}
                     </div>

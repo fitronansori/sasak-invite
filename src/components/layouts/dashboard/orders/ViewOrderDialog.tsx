@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import { OrderStatus } from "@/generated/prisma/enums";
 import type { OrderWithItems } from "@/actions/dash-order-action";
+import { formatCurrency } from "@/lib/utils";
 
 type ViewOrderDialogProps = {
   order: OrderWithItems;
@@ -52,14 +53,6 @@ export function ViewOrderDialog({
       hour: "2-digit",
       minute: "2-digit",
     });
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(amount);
   };
 
   return (

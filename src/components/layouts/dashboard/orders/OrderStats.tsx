@@ -3,6 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ORDER_STATS_CONFIG } from "@/constants/dashboardData";
+import { formatCurrency } from "@/lib/utils";
 
 type OrderStatsProps = {
   total: number;
@@ -21,14 +22,6 @@ export function OrderStats({
   cancelled,
   total_revenue,
 }: OrderStatsProps) {
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(amount);
-  };
-
   const statsValues = [
     { value: total, isFormatted: false },
     { value: formatCurrency(total_revenue), isFormatted: true },

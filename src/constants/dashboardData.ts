@@ -303,12 +303,13 @@ export const ANALYTICS_OVERVIEW_CONFIG: AnalyticsOverviewStatConfig[] = [
     icon: TrendingUp,
     color: "text-emerald-600",
     bgColor: "bg-emerald-50",
-    formatValue: (value: number) =>
-      new Intl.NumberFormat("id-ID", {
+    formatValue: (value: number) => {
+      return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
-        minimumFractionDigits: 0,
-      }).format(value),
+        maximumFractionDigits: 0,
+      }).format(value);
+    },
   },
 ];
 

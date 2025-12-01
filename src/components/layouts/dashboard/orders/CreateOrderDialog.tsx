@@ -40,6 +40,7 @@ import { createOrder } from "@/actions/dash-order-action";
 import { getAllTemplates } from "@/actions/dash-template-action";
 import { OrderStatus } from "@/generated/prisma/enums";
 import type { TemplateModel } from "@/generated/prisma/models";
+import { formatCurrency } from "@/lib/utils";
 
 const statusLabels: Record<OrderStatus, string> = {
   PENDING: "Menunggu",
@@ -146,14 +147,6 @@ export function CreateOrderDialog() {
     });
 
     return total;
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(amount);
   };
 
   const onSubmit = async (data: CreateOrderFormValues) => {

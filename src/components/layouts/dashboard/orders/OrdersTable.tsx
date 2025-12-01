@@ -45,6 +45,7 @@ import { OrderStatus } from "@/generated/prisma/enums";
 import type { OrderWithItems } from "@/actions/dash-order-action";
 import { EditOrderDialog } from "./EditOrderDialog";
 import { ViewOrderDialog } from "./ViewOrderDialog";
+import { formatCurrency } from "@/lib/utils";
 
 type OrdersTableProps = {
   orders: OrderWithItems[];
@@ -124,14 +125,6 @@ export function OrdersTable({ orders }: OrdersTableProps) {
       hour: "2-digit",
       minute: "2-digit",
     });
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(amount);
   };
 
   if (orders.length === 0) {
