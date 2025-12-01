@@ -1,10 +1,11 @@
+import { DashboardPageHeader } from "@/components/layouts/dashboard/DashboardPageHeader";
+import { TemplatesDashboard } from "@/components/layouts/dashboard/templates/TemplatesDashboard";
+
 import { getActiveCategories } from "@/actions/dash-category-action";
 import {
   getAllTemplates,
   getTemplatesStats,
 } from "@/actions/dash-template-action";
-import { DashboardPageHeader } from "@/components/layouts/dashboard/DashboardPageHeader";
-import { TemplatesDashboard } from "@/components/layouts/dashboard/templates/TemplatesDashboard";
 
 type SearchParams = Promise<{
   page?: string;
