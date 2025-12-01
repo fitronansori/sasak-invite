@@ -1,3 +1,4 @@
+import { DashboardPageHeader } from "@/components/layouts/dashboard/DashboardPageHeader";
 import { OrdersDashboard } from "@/components/layouts/dashboard/orders";
 
 import { getAllOrders, getOrdersStats } from "@/actions/dash-order-action";
@@ -26,12 +27,10 @@ export default async function DashboardOrdersPage(props: {
 
   return (
     <div className="dashboard-container space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Orders</h1>
-        <p className="text-muted-foreground">
-          Kelola semua pesanan pelanggan Anda
-        </p>
-      </div>
+      <DashboardPageHeader
+        title="Orders"
+        description="Kelola semua pesanan pelanggan Anda"
+      />
 
       <OrdersDashboard
         orders={result.orders}

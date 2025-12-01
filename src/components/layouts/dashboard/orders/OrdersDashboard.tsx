@@ -1,81 +1,25 @@
 "use client";
 
-import { useCallback } from "react";
-
-import { useRouter, useSearchParams } from "next/navigation";
-
-import type { OrderWithItems } from "@/actions/dash-order-action";
+import { useOrdersURL } from "@/hooks/use-orders-url";
 
 import { CreateOrderDialog } from "./CreateOrderDialog";
 import { OrderFilters } from "./OrderFilters";
 import { OrderStats } from "./OrderStats";
 import { OrdersPagination } from "./OrdersPagination";
 import { OrdersTable } from "./OrdersTable";
-
-type OrdersDashboardProps = {
-  orders: OrderWithItems[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-  stats: {
-    total: number;
-    pending: number;
-    processing: number;
-    paid: number;
-    completed: number;
-    cancelled: number;
-    total_revenue: number;
-  };
-};
+import type { OrdersDashboardProps } from "./types";
 
 export function OrdersDashboard({
   orders,
   pagination,
   stats,
 }: OrdersDashboardProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const updateURL = useCallback(
-    (updates: Record<string, string | number>) => {
-      const params = new URLSearchParams(searchParams.toString());
-
-      Object.entries(updates).forEach(([key, value]) => {
-        if (value) {
-          params.set(key, value.toString());
-        } else {
-          params.delete(key);
-        }
-      });
-
-      // Reset to page 1 when filters change (except when page itself changes)
-      if (!updates.page && params.has("page")) {
-        params.set("page", "1");
-      }
-
-      router.push(`?${params.toString()}`);
-    },
-    [router, searchParams]
-  );
-
-  const handleSearchChange = (query: string) => {
-    updateURL({ search: query });
-  };
-
-  const handleStatusChange = (status: string) => {
-    updateURL({ status });
-  };
-
-  const handlePageChange = (page: number) => {
-    updateURL({ page });
-  };
-
-  const handlePageSizeChange = (size: number) => {
-    updateURL({ limit: size, page: 1 });
-  };
+  const {
+    handleSearchChange,
+    handleStatusChange,
+    handlePageChange,
+    handlePageSizeChange,
+  } = useOrdersURL();
 
   return (
     <div className="space-y-6">
