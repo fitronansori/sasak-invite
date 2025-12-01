@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { currentUser } from "@clerk/nextjs/server";
+import { MessageSquare } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -42,12 +43,24 @@ export default async function Header() {
 
           <div className={cn("hidden items-center md:flex")}>
             {user ? (
-              <Button size={"lg"} asChild>
-                <Link href={"/dashboard"}>Dashboard</Link>
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button size={"lg"} asChild>
+                  <Link href={"/dashboard"}>Dashboard</Link>
+                </Button>
+
+                <Button size={"lg"} asChild>
+                  <Link href={"/"} className="inline-flex items-center">
+                    <MessageSquare className="size-4" />
+                    Konsultasi
+                  </Link>
+                </Button>
+              </div>
             ) : (
               <Button size={"lg"} asChild>
-                <Link href={"/sign-in"}>Masuk</Link>
+                <Link href={"/"} className="inline-flex items-center">
+                  <MessageSquare className="size-4" />
+                  Konsultasi
+                </Link>
               </Button>
             )}
           </div>

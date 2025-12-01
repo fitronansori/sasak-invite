@@ -58,15 +58,24 @@ const MobileMenu = ({ isAuthenticated }: MobileMenuProps) => {
           ))}
 
           {isAuthenticated ? (
-            <Link
-              href={"/dashboard"}
-              className={cn("hover:text-primary w-full")}
-            >
-              Dashboard
-            </Link>
+            <>
+              <Link
+                href={"/sign-in"}
+                className={cn("hover:text-primary w-full")}
+              >
+                Konsultasi
+              </Link>
+              
+              <Link
+                href={"/dashboard"}
+                className={cn("hover:text-primary w-full")}
+              >
+                Dashboard
+              </Link>
+            </>
           ) : (
             <Link href={"/sign-in"} className={cn("hover:text-primary w-full")}>
-              Masuk
+              Konsultasi
             </Link>
           )}
         </nav>
