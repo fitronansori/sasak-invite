@@ -1,5 +1,6 @@
 "use server";
 
+import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/lib/prisma";
@@ -159,6 +160,15 @@ export async function getTemplateById(
 
 // Create new template
 export async function createTemplate(data: CreateTemplateInput) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      message: "Anda harus login untuk membuat template",
+    };
+  }
+
   try {
     const template = await prisma.template.create({
       data: {
@@ -208,6 +218,15 @@ export async function createTemplate(data: CreateTemplateInput) {
 
 // Update template
 export async function updateTemplate(id: string, data: UpdateTemplateInput) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      message: "Anda harus login untuk mengupdate template",
+    };
+  }
+
   try {
     const template = await prisma.template.update({
       where: { id },
@@ -266,6 +285,15 @@ export async function updateTemplate(id: string, data: UpdateTemplateInput) {
 
 // Delete template
 export async function deleteTemplate(id: string) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      message: "Anda harus login untuk menghapus template",
+    };
+  }
+
   try {
     // Check if template has orders
     const orderItems = await prisma.orderItem.count({
@@ -302,6 +330,15 @@ export async function deleteTemplate(id: string) {
 
 // Toggle template active status
 export async function toggleTemplateStatus(id: string, is_active: boolean) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      message: "Anda harus login untuk mengubah status template",
+    };
+  }
+
   try {
     const template = await prisma.template.update({
       where: { id },
@@ -329,6 +366,15 @@ export async function toggleTemplateStatus(id: string, is_active: boolean) {
 
 // Toggle template featured status
 export async function toggleTemplateFeatured(id: string, is_featured: boolean) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      message: "Anda harus login untuk mengubah status unggulan template",
+    };
+  }
+
   try {
     const template = await prisma.template.update({
       where: { id },

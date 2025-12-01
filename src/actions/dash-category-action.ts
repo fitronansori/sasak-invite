@@ -1,5 +1,6 @@
 "use server";
 
+import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
@@ -62,6 +63,15 @@ export async function createCategory(data: {
   image?: string;
   is_active?: boolean;
 }) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      error: "Anda harus login untuk membuat kategori",
+    };
+  }
+
   try {
     const category = await prisma.category.create({
       data: {
@@ -93,6 +103,15 @@ export async function updateCategory(
     is_active?: boolean;
   }
 ) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      error: "Anda harus login untuk mengupdate kategori",
+    };
+  }
+
   try {
     const category = await prisma.category.update({
       where: { id },
@@ -110,6 +129,15 @@ export async function updateCategory(
 
 // Delete category
 export async function deleteCategory(id: string) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      error: "Anda harus login untuk menghapus kategori",
+    };
+  }
+
   try {
     // Check if category has templates
     const templatesCount = await prisma.template.count({
@@ -138,6 +166,15 @@ export async function deleteCategory(id: string) {
 
 // Toggle category active status
 export async function toggleCategoryStatus(id: string, is_active: boolean) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      success: false,
+      error: "Anda harus login untuk mengubah status kategori",
+    };
+  }
+
   try {
     // Use transaction to ensure both operations succeed or fail together
     const result = await prisma.$transaction(async (tx) => {
