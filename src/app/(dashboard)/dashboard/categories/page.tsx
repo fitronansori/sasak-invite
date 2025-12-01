@@ -1,5 +1,5 @@
-
 import { CategoriesDashboard } from "@/components/layouts/dashboard/categories";
+
 import {
   getAllCategories,
   getCategoriesStats,

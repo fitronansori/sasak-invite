@@ -1,10 +1,4 @@
-
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import {
   ANALYTICS_OVERVIEW_CONFIG,
@@ -37,7 +31,7 @@ export function AnalyticsOverviewCards({ data }: AnalyticsOverviewCardsProps) {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{displayValue}</div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-muted-foreground mt-1 text-xs">
                 {config.getSubtitle(data)}
               </p>
             </CardContent>

@@ -1,11 +1,10 @@
-
 "use client";
 
-import { CategoryStats } from "./CategoryStats";
-import { CategoriesTable } from "./CategoriesTable";
-import { CreateCategoryDialog } from "./CreateCategoryDialog";
-
 import type { CategoryModel } from "@/generated/prisma/models";
+
+import { CategoriesTable } from "./CategoriesTable";
+import { CategoryStats } from "./CategoryStats";
+import { CreateCategoryDialog } from "./CreateCategoryDialog";
 
 type CategoriesDashboardProps = {
   categories: CategoryModel[];

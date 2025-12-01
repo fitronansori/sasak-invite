@@ -1,27 +1,10 @@
 "use client";
 
 import { useState } from "react";
+
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -32,13 +15,32 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 import {
   deleteCategory,
   toggleCategoryStatus,
 } from "@/actions/dash-category-action";
 import type { CategoryModel } from "@/generated/prisma/models";
+
 import { EditCategoryDialog } from "./EditCategoryDialog";
 
 type CategoriesTableProps = {
@@ -128,7 +130,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
               <TableRow key={category.id}>
                 <TableCell className="font-medium">{category.name}</TableCell>
                 <TableCell>
-                  <code className="rounded bg-muted px-2 py-1 text-xs">
+                  <code className="bg-muted rounded px-2 py-1 text-xs">
                     {category.slug}
                   </code>
                 </TableCell>
@@ -143,7 +145,9 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                         handleToggleStatus(category, checked)
                       }
                     />
-                    <Badge variant={category.is_active ? "default" : "secondary"}>
+                    <Badge
+                      variant={category.is_active ? "default" : "secondary"}
+                    >
                       {category.is_active ? "Aktif" : "Nonaktif"}
                     </Badge>
                   </div>

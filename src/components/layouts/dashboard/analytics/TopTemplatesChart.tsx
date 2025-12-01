@@ -1,5 +1,6 @@
-
 "use client";
+
+import { Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts";
 
 import {
   Card,
@@ -8,21 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Legend,
-} from "recharts";
 
 import { CHART_CONFIG } from "@/constants/dashboardData";
 
@@ -50,25 +41,27 @@ export function TopTemplatesChart({ data }: TopTemplatesChartProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className="px-2 md:px-6">
-        <ChartContainer config={CHART_CONFIG} className="h-[300px] md:h-[300px] w-full">
+        <ChartContainer
+          config={CHART_CONFIG}
+          className="h-[300px] w-full md:h-[300px]"
+        >
           <BarChart data={data} layout="horizontal">
             <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
             <XAxis type="number" tick={{ fontSize: 10 }} />
-            <YAxis 
-              dataKey="title" 
-              type="category" 
+            <YAxis
+              dataKey="title"
+              type="category"
               width={80}
               tick={{ fontSize: 9 }}
               tickFormatter={(value) => {
                 // Truncate long titles on mobile
-                return value.length > 12 ? value.substring(0, 12) + '...' : value;
+                return value.length > 12
+                  ? value.substring(0, 12) + "..."
+                  : value;
               }}
             />
             <ChartTooltip content={<ChartTooltipContent />} />
-            <Legend 
-              wrapperStyle={{ fontSize: '11px' }}
-              iconSize={10}
-            />
+            <Legend wrapperStyle={{ fontSize: "11px" }} iconSize={10} />
             <Bar
               dataKey="orders_count"
               fill="#3b82f6"

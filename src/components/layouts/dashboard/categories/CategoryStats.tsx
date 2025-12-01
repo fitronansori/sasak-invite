@@ -1,5 +1,5 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { CATEGORY_STATS_CONFIG } from "@/constants/dashboardData";
 
 type CategoryStatsProps = {

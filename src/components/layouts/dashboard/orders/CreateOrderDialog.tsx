@@ -1,13 +1,17 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useEffect, useState } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
 import { Plus, Trash2 } from "lucide-react";
+import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
+import { formatCurrency } from "@/lib/utils";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -25,8 +29,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -34,13 +36,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 
 import { createOrder } from "@/actions/dash-order-action";
 import { getAllTemplates } from "@/actions/dash-template-action";
 import { OrderStatus } from "@/generated/prisma/enums";
 import type { TemplateModel } from "@/generated/prisma/models";
-import { formatCurrency } from "@/lib/utils";
 
 const statusLabels: Record<OrderStatus, string> = {
   PENDING: "Menunggu",
@@ -77,7 +78,11 @@ const createOrderFormSchema = z.object({
   customer_phone: z.string().optional(),
   status: z.nativeEnum(OrderStatus),
   payment_method: z.string().optional(),
-  payment_proof: z.string().url("URL bukti pembayaran tidak valid").optional().or(z.literal("")),
+  payment_proof: z
+    .string()
+    .url("URL bukti pembayaran tidak valid")
+    .optional()
+    .or(z.literal("")),
   notes: z.string().optional(),
   order_items: z
     .array(
@@ -196,7 +201,7 @@ export function CreateOrderDialog() {
           Tambah Order
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Tambah Order Baru</DialogTitle>
           <DialogDescription>
@@ -299,7 +304,10 @@ export function CreateOrderDialog() {
                                   </SelectItem>
                                 ) : (
                                   templates.map((template) => (
-                                    <SelectItem key={template.id} value={template.id}>
+                                    <SelectItem
+                                      key={template.id}
+                                      value={template.id}
+                                    >
                                       {template.title}
                                     </SelectItem>
                                   ))
@@ -351,8 +359,8 @@ export function CreateOrderDialog() {
 
               <div className="flex justify-end">
                 <div className="text-right">
-                  <p className="text-sm text-muted-foreground">Total</p>
-                  <p className="text-2xl font-bold text-primary">
+                  <p className="text-muted-foreground text-sm">Total</p>
+                  <p className="text-primary text-2xl font-bold">
                     {formatCurrency(calculateTotal())}
                   </p>
                 </div>
@@ -379,11 +387,13 @@ export function CreateOrderDialog() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {Object.entries(statusLabels).map(([value, label]) => (
-                            <SelectItem key={value} value={value}>
-                              {label}
-                            </SelectItem>
-                          ))}
+                          {Object.entries(statusLabels).map(
+                            ([value, label]) => (
+                              <SelectItem key={value} value={value}>
+                                {label}
+                              </SelectItem>
+                            )
+                          )}
                         </SelectContent>
                       </Select>
                       <FormMessage />

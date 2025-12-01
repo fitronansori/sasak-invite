@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useState } from "react";
+
 import { Search } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { OrderStatus } from "@/generated/prisma/enums";
 
 type OrderFiltersProps = {

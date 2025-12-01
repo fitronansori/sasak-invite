@@ -1,9 +1,10 @@
-
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ORDER_STATS_CONFIG } from "@/constants/dashboardData";
 import { formatCurrency } from "@/lib/utils";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import { ORDER_STATS_CONFIG } from "@/constants/dashboardData";
 
 type OrderStatsProps = {
   total: number;
@@ -47,7 +48,7 @@ export function OrderStats({
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stat.value}</div>
-            <p className="text-xs text-muted-foreground">{stat.description}</p>
+            <p className="text-muted-foreground text-xs">{stat.description}</p>
           </CardContent>
         </Card>
       ))}

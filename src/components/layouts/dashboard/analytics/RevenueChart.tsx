@@ -1,5 +1,6 @@
-
 "use client";
+
+import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import {
   Card,
@@ -8,21 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Legend,
-} from "recharts";
 
 import { CHART_CONFIG } from "@/constants/dashboardData";
 
@@ -48,23 +39,28 @@ export function RevenueChart({ data }: RevenueChartProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className="px-2 md:px-6">
-        <ChartContainer config={CHART_CONFIG} className="h-[250px] md:h-[300px] w-full">
+        <ChartContainer
+          config={CHART_CONFIG}
+          className="h-[250px] w-full md:h-[300px]"
+        >
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-            <XAxis 
-              dataKey="month" 
+            <XAxis
+              dataKey="month"
               tick={{ fontSize: 10 }}
               angle={-45}
               textAnchor="end"
               height={60}
             />
             <YAxis yAxisId="left" tick={{ fontSize: 10 }} width={45} />
-            <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 10 }} width={45} />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <Legend 
-              wrapperStyle={{ fontSize: '12px' }}
-              iconSize={10}
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              tick={{ fontSize: 10 }}
+              width={45}
             />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Legend wrapperStyle={{ fontSize: "12px" }} iconSize={10} />
             <Line
               yAxisId="left"
               type="monotone"

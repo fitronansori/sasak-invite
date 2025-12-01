@@ -1,10 +1,10 @@
-
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -27,13 +27,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
 
 import { createCategory } from "@/actions/dash-category-action";
 import {
-  categoryFormSchema,
   type CategoryFormValues,
+  categoryFormSchema,
 } from "@/constants/formSchema";
 
 type FormData = CategoryFormValues;
@@ -134,7 +134,8 @@ export function CreateCategoryDialog() {
                     <Input placeholder="pernikahan" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Akan otomatis dibuat dari nama. Gunakan lowercase dan dash (-)
+                    Akan otomatis dibuat dari nama. Gunakan lowercase dan dash
+                    (-)
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

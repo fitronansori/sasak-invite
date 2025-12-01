@@ -1,5 +1,6 @@
-
 "use client";
+
+import { Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts";
 
 import {
   Card,
@@ -8,21 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Legend,
-} from "recharts";
 
 import { CHART_CONFIG } from "@/constants/dashboardData";
 
@@ -37,7 +28,9 @@ type CategoryPerformanceChartProps = {
   data: CategoryPerformance[];
 };
 
-export function CategoryPerformanceChart({ data }: CategoryPerformanceChartProps) {
+export function CategoryPerformanceChart({
+  data,
+}: CategoryPerformanceChartProps) {
   return (
     <Card>
       <CardHeader>
@@ -49,26 +42,28 @@ export function CategoryPerformanceChart({ data }: CategoryPerformanceChartProps
         </CardDescription>
       </CardHeader>
       <CardContent className="px-2 md:px-6">
-        <ChartContainer config={CHART_CONFIG} className="h-[300px] md:h-[300px] w-full">
+        <ChartContainer
+          config={CHART_CONFIG}
+          className="h-[300px] w-full md:h-[300px]"
+        >
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-            <XAxis 
-              dataKey="category_name" 
+            <XAxis
+              dataKey="category_name"
               tick={{ fontSize: 10 }}
               angle={-45}
               textAnchor="end"
               height={70}
               tickFormatter={(value) => {
                 // Truncate long category names
-                return value.length > 10 ? value.substring(0, 10) + '...' : value;
+                return value.length > 10
+                  ? value.substring(0, 10) + "..."
+                  : value;
               }}
             />
             <YAxis tick={{ fontSize: 10 }} width={50} />
             <ChartTooltip content={<ChartTooltipContent />} />
-            <Legend 
-              wrapperStyle={{ fontSize: '11px' }}
-              iconSize={10}
-            />
+            <Legend wrapperStyle={{ fontSize: "11px" }} iconSize={10} />
             <Bar
               dataKey="total_revenue"
               fill="#10b981"

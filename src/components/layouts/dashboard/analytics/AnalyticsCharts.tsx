@@ -1,24 +1,17 @@
-
 "use client";
 
 import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-
-import {
-  BarChart,
   Bar,
-  LineChart,
-  Line,
-  PieChart,
-  Pie,
+  BarChart,
+  CartesianGrid,
   Cell,
+  Legend,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Legend,
 } from "recharts";
 
 import {
@@ -28,6 +21,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
 import {
   CHART_CONFIG,
@@ -90,23 +88,28 @@ export function AnalyticsCharts({
             </CardDescription>
           </CardHeader>
           <CardContent className="px-2 md:px-6">
-            <ChartContainer config={CHART_CONFIG} className="h-[250px] md:h-[300px] w-full">
+            <ChartContainer
+              config={CHART_CONFIG}
+              className="h-[250px] w-full md:h-[300px]"
+            >
               <LineChart data={revenueByMonth}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                <XAxis 
-                  dataKey="month" 
+                <XAxis
+                  dataKey="month"
                   tick={{ fontSize: 10 }}
                   angle={-45}
                   textAnchor="end"
                   height={60}
                 />
                 <YAxis yAxisId="left" tick={{ fontSize: 10 }} width={45} />
-                <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 10 }} width={45} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '12px' }}
-                  iconSize={10}
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tick={{ fontSize: 10 }}
+                  width={45}
                 />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Legend wrapperStyle={{ fontSize: "12px" }} iconSize={10} />
                 <Line
                   yAxisId="left"
                   type="monotone"
@@ -141,7 +144,10 @@ export function AnalyticsCharts({
             </CardDescription>
           </CardHeader>
           <CardContent className="px-2 md:px-6">
-            <ChartContainer config={CHART_CONFIG} className="h-[250px] md:h-[300px] w-full">
+            <ChartContainer
+              config={CHART_CONFIG}
+              className="h-[250px] w-full md:h-[300px]"
+            >
               <PieChart>
                 <Pie
                   data={ordersByStatus}
@@ -150,15 +156,18 @@ export function AnalyticsCharts({
                   labelLine={false}
                   label={({ status, percentage }) => {
                     // Hide labels on very small screens
-                    if (typeof window !== 'undefined' && window.innerWidth < 640) {
-                      return '';
+                    if (
+                      typeof window !== "undefined" &&
+                      window.innerWidth < 640
+                    ) {
+                      return "";
                     }
                     return `${ORDER_STATUS_LABELS[status]}: ${percentage.toFixed(1)}%`;
                   }}
                   outerRadius={60}
                   fill="#8884d8"
                   dataKey="count"
-                  style={{ fontSize: '10px' }}
+                  style={{ fontSize: "10px" }}
                 >
                   {ordersByStatus.map((entry) => (
                     <Cell
@@ -168,8 +177,8 @@ export function AnalyticsCharts({
                   ))}
                 </Pie>
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '11px' }}
+                <Legend
+                  wrapperStyle={{ fontSize: "11px" }}
                   iconSize={8}
                   formatter={(value) => ORDER_STATUS_LABELS[value] || value}
                 />
@@ -192,25 +201,27 @@ export function AnalyticsCharts({
             </CardDescription>
           </CardHeader>
           <CardContent className="px-2 md:px-6">
-            <ChartContainer config={CHART_CONFIG} className="h-[300px] md:h-[300px] w-full">
+            <ChartContainer
+              config={CHART_CONFIG}
+              className="h-[300px] w-full md:h-[300px]"
+            >
               <BarChart data={topTemplates} layout="horizontal">
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                 <XAxis type="number" tick={{ fontSize: 10 }} />
-                <YAxis 
-                  dataKey="title" 
-                  type="category" 
+                <YAxis
+                  dataKey="title"
+                  type="category"
                   width={80}
                   tick={{ fontSize: 9 }}
                   tickFormatter={(value) => {
                     // Truncate long titles on mobile
-                    return value.length > 12 ? value.substring(0, 12) + '...' : value;
+                    return value.length > 12
+                      ? value.substring(0, 12) + "..."
+                      : value;
                   }}
                 />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '11px' }}
-                  iconSize={10}
-                />
+                <Legend wrapperStyle={{ fontSize: "11px" }} iconSize={10} />
                 <Bar
                   dataKey="orders_count"
                   fill="#3b82f6"
@@ -239,26 +250,28 @@ export function AnalyticsCharts({
             </CardDescription>
           </CardHeader>
           <CardContent className="px-2 md:px-6">
-            <ChartContainer config={CHART_CONFIG} className="h-[300px] md:h-[300px] w-full">
+            <ChartContainer
+              config={CHART_CONFIG}
+              className="h-[300px] w-full md:h-[300px]"
+            >
               <BarChart data={categoryPerformance}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                <XAxis 
-                  dataKey="category_name" 
+                <XAxis
+                  dataKey="category_name"
                   tick={{ fontSize: 10 }}
                   angle={-45}
                   textAnchor="end"
                   height={70}
                   tickFormatter={(value) => {
                     // Truncate long category names
-                    return value.length > 10 ? value.substring(0, 10) + '...' : value;
+                    return value.length > 10
+                      ? value.substring(0, 10) + "..."
+                      : value;
                   }}
                 />
                 <YAxis tick={{ fontSize: 10 }} width={50} />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '11px' }}
-                  iconSize={10}
-                />
+                <Legend wrapperStyle={{ fontSize: "11px" }} iconSize={10} />
                 <Bar
                   dataKey="total_revenue"
                   fill="#10b981"

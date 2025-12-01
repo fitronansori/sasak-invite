@@ -1,12 +1,18 @@
-
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
-import { prisma } from "@/lib/prisma";
-import { OrderStatus } from "@/generated/prisma/enums";
 
-import type { OrderModel, OrderItemModel, TemplateModel, CategoryModel } from "@/generated/prisma/models";
+import { auth } from "@clerk/nextjs/server";
+
+import { prisma } from "@/lib/prisma";
+
+import { OrderStatus } from "@/generated/prisma/enums";
+import type {
+  CategoryModel,
+  OrderItemModel,
+  OrderModel,
+  TemplateModel,
+} from "@/generated/prisma/models";
 
 // Extended types with relations
 export type OrderWithItems = OrderModel & {
@@ -35,14 +41,11 @@ export type GetOrdersResult = {
 };
 
 // Get all orders with pagination and filters
-export async function getAllOrders(params: GetOrdersParams = {}): Promise<GetOrdersResult> {
+export async function getAllOrders(
+  params: GetOrdersParams = {}
+): Promise<GetOrdersResult> {
   try {
-    const {
-      page = 1,
-      limit = 10,
-      search = "",
-      status = "all",
-    } = params;
+    const { page = 1, limit = 10, search = "", status = "all" } = params;
 
     const skip = (page - 1) * limit;
 

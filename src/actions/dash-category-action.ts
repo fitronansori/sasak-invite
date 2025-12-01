@@ -1,11 +1,12 @@
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+
+import { auth } from "@clerk/nextjs/server";
+
 import { prisma } from "@/lib/prisma";
 
 import type { CategoryModel } from "../generated/prisma/models";
-
 
 // Get all categories
 export async function getAllCategories(): Promise<CategoryModel[]> {
@@ -20,7 +21,6 @@ export async function getAllCategories(): Promise<CategoryModel[]> {
     throw new Error("Gagal mengambil data kategori");
   }
 }
-
 
 // Get active categories only
 export async function getActiveCategories(): Promise<CategoryModel[]> {
@@ -37,7 +37,6 @@ export async function getActiveCategories(): Promise<CategoryModel[]> {
   }
 }
 
-
 // Get categories stats
 export async function getCategoriesStats() {
   try {
@@ -53,7 +52,6 @@ export async function getCategoriesStats() {
     throw new Error("Gagal mengambil statistik kategori");
   }
 }
-
 
 // Create new category
 export async function createCategory(data: {
@@ -91,7 +89,6 @@ export async function createCategory(data: {
   }
 }
 
-
 // Update category
 export async function updateCategory(
   id: string,
@@ -125,7 +122,6 @@ export async function updateCategory(
     return { success: false, error: "Gagal mengupdate kategori" };
   }
 }
-
 
 // Delete category
 export async function deleteCategory(id: string) {
@@ -162,7 +158,6 @@ export async function deleteCategory(id: string) {
     return { success: false, error: "Gagal menghapus kategori" };
   }
 }
-
 
 // Toggle category active status
 export async function toggleCategoryStatus(id: string, is_active: boolean) {

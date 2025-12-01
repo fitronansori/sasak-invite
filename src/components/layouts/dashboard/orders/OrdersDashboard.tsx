@@ -1,15 +1,16 @@
-
 "use client";
 
 import { useCallback } from "react";
+
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { CreateOrderDialog } from "./CreateOrderDialog";
-import { OrdersTable } from "./OrdersTable";
-import { OrderStats } from "./OrderStats";
-import { OrderFilters } from "./OrderFilters";
-import { OrdersPagination } from "./OrdersPagination";
 import type { OrderWithItems } from "@/actions/dash-order-action";
+
+import { CreateOrderDialog } from "./CreateOrderDialog";
+import { OrderFilters } from "./OrderFilters";
+import { OrderStats } from "./OrderStats";
+import { OrdersPagination } from "./OrdersPagination";
+import { OrdersTable } from "./OrdersTable";
 
 type OrdersDashboardProps = {
   orders: OrderWithItems[];

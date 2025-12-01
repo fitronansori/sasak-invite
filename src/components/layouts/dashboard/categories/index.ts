@@ -1,4 +1,3 @@
-
 export { CategoriesDashboard } from "./CategoriesDashboard";
 export { CategoriesTable } from "./CategoriesTable";
 export { CategoryStats } from "./CategoryStats";

@@ -1,7 +1,7 @@
-
 "use server";
 
 import { prisma } from "@/lib/prisma";
+
 import { OrderStatus } from "@/generated/prisma/enums";
 
 export type AnalyticsOverview = {
@@ -111,7 +111,7 @@ export async function getRevenueByMonth(): Promise<RevenueByMonth[]> {
 
     // Group by month
     const monthlyData = new Map<string, { revenue: number; orders: number }>();
-    
+
     orders.forEach((order) => {
       const monthKey = order.created_at.toLocaleDateString("id-ID", {
         year: "numeric",
@@ -233,26 +233,31 @@ export async function getCategoryPerformance(): Promise<CategoryPerformance[]> {
       },
     });
 
-    return categories.map((category) => {
-      const templates_count = category.templates.length;
-      const orders_count = category.templates.reduce(
-        (sum, template) => sum + template.order_items.length,
-        0
-      );
-      const total_revenue = category.templates.reduce(
-        (sum, template) =>
-          sum +
-          template.order_items.reduce((itemSum, item) => itemSum + item.price, 0),
-        0
-      );
+    return categories
+      .map((category) => {
+        const templates_count = category.templates.length;
+        const orders_count = category.templates.reduce(
+          (sum, template) => sum + template.order_items.length,
+          0
+        );
+        const total_revenue = category.templates.reduce(
+          (sum, template) =>
+            sum +
+            template.order_items.reduce(
+              (itemSum, item) => itemSum + item.price,
+              0
+            ),
+          0
+        );
 
-      return {
-        category_name: category.name,
-        templates_count,
-        orders_count,
-        total_revenue,
-      };
-    }).sort((a, b) => b.total_revenue - a.total_revenue);
+        return {
+          category_name: category.name,
+          templates_count,
+          orders_count,
+          total_revenue,
+        };
+      })
+      .sort((a, b) => b.total_revenue - a.total_revenue);
   } catch (error) {
     console.error("Error fetching category performance:", error);
     throw new Error("Gagal mengambil data performa kategori");

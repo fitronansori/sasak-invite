@@ -1,12 +1,6 @@
+import { CheckCircle, Clock, Star } from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-import { Star, Clock, CheckCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type AnalyticsOverview = {
   total_templates: number;
@@ -34,8 +28,10 @@ export function AdditionalStatsCards({ overview }: AdditionalStatsCardsProps) {
           <Star className="h-4 w-4 text-yellow-600" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{overview.featured_templates}</div>
-          <p className="text-xs text-muted-foreground">
+          <div className="text-2xl font-bold">
+            {overview.featured_templates}
+          </div>
+          <p className="text-muted-foreground text-xs">
             Dari {overview.total_templates} template
           </p>
         </CardContent>
@@ -50,9 +46,7 @@ export function AdditionalStatsCards({ overview }: AdditionalStatsCardsProps) {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{overview.pending_orders}</div>
-          <p className="text-xs text-muted-foreground">
-            Perlu diproses segera
-          </p>
+          <p className="text-muted-foreground text-xs">Perlu diproses segera</p>
         </CardContent>
       </Card>
 
@@ -66,11 +60,14 @@ export function AdditionalStatsCards({ overview }: AdditionalStatsCardsProps) {
         <CardContent>
           <div className="text-2xl font-bold">
             {overview.total_orders > 0
-              ? ((overview.completed_orders / overview.total_orders) * 100).toFixed(1)
+              ? (
+                  (overview.completed_orders / overview.total_orders) *
+                  100
+                ).toFixed(1)
               : 0}
             %
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             {overview.completed_orders} dari {overview.total_orders} pesanan
           </p>
         </CardContent>

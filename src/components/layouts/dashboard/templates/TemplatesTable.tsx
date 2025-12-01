@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 
+import { formatCurrency } from "@/lib/utils";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -51,7 +53,6 @@ import {
   toggleTemplateStatus,
 } from "@/actions/dash-template-action";
 import type { CategoryModel } from "@/generated/prisma/models";
-import { formatCurrency } from "@/lib/utils";
 
 import { EditTemplateDialog } from "./EditTemplateDialog";
 

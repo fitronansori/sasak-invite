@@ -1,21 +1,21 @@
+import { formatCurrency } from "@/lib/utils";
 
-import {
-  getAnalyticsOverview,
-  getRevenueByMonth,
-  getOrdersByStatus,
-  getTopTemplates,
-  getCategoryPerformance,
-  getRecentOrders,
-} from "@/actions/dash-analytics-action";
-
+import { AdditionalStatsCards } from "@/components/layouts/dashboard/analytics/AdditionalStatsCards";
 import { AnalyticsOverviewCards } from "@/components/layouts/dashboard/analytics/AnalyticsOverviewCards";
+import { CategoryPerformanceChart } from "@/components/layouts/dashboard/analytics/CategoryPerformanceChart";
+import { RecentActivityCard } from "@/components/layouts/dashboard/analytics/RecentActivityCard";
 import { RevenueChart } from "@/components/layouts/dashboard/analytics/RevenueChart";
 import { StatusDistributionChart } from "@/components/layouts/dashboard/analytics/StatusDistributionChart";
 import { TopTemplatesChart } from "@/components/layouts/dashboard/analytics/TopTemplatesChart";
-import { CategoryPerformanceChart } from "@/components/layouts/dashboard/analytics/CategoryPerformanceChart";
-import { RecentActivityCard } from "@/components/layouts/dashboard/analytics/RecentActivityCard";
-import { AdditionalStatsCards } from "@/components/layouts/dashboard/analytics/AdditionalStatsCards";
-import { formatCurrency } from "@/lib/utils";
+
+import {
+  getAnalyticsOverview,
+  getCategoryPerformance,
+  getOrdersByStatus,
+  getRecentOrders,
+  getRevenueByMonth,
+  getTopTemplates,
+} from "@/actions/dash-analytics-action";
 
 const DashboardAnalytics = async () => {
   const [
@@ -61,8 +61,8 @@ const DashboardAnalytics = async () => {
       </div>
 
       {/* Recent Activity */}
-      <RecentActivityCard 
-        orders={recentOrders} 
+      <RecentActivityCard
+        orders={recentOrders}
         formatCurrency={formatCurrency}
       />
 

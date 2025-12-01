@@ -1,4 +1,6 @@
+import { Activity, Clock } from "lucide-react";
 
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -6,10 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Activity, Clock } from "lucide-react";
 
 import { ORDER_STATUS_LABELS } from "@/constants/dashboardData";
 
@@ -29,7 +28,10 @@ type RecentActivityCardProps = {
   formatCurrency: (amount: number) => string;
 };
 
-export function RecentActivityCard({ orders, formatCurrency }: RecentActivityCardProps) {
+export function RecentActivityCard({
+  orders,
+  formatCurrency,
+}: RecentActivityCardProps) {
   return (
     <Card>
       <CardHeader>
@@ -46,9 +48,7 @@ export function RecentActivityCard({ orders, formatCurrency }: RecentActivityCar
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-medium">
-                      {order.order_number}
-                    </p>
+                    <p className="text-sm font-medium">{order.order_number}</p>
                     <Badge
                       variant={
                         order.status === "COMPLETED"
@@ -61,15 +61,15 @@ export function RecentActivityCard({ orders, formatCurrency }: RecentActivityCar
                       {ORDER_STATUS_LABELS[order.status]}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {order.customer_name} • {order.customer_email}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-muted-foreground text-xs">
                     {order.order_items.length} item •{" "}
                     {formatCurrency(order.total_amount)}
                   </p>
                 </div>
-                <div className="text-right text-sm text-muted-foreground">
+                <div className="text-muted-foreground text-right text-sm">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3 w-3" />
                     {new Date(order.created_at).toLocaleDateString("id-ID", {
@@ -80,9 +80,7 @@ export function RecentActivityCard({ orders, formatCurrency }: RecentActivityCar
                   </div>
                 </div>
               </div>
-              {index < orders.length - 1 && (
-                <Separator className="mt-4" />
-              )}
+              {index < orders.length - 1 && <Separator className="mt-4" />}
             </div>
           ))}
         </div>

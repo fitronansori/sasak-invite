@@ -1,5 +1,5 @@
-
 import { z } from "zod";
+
 import { OrderStatus } from "@/generated/prisma/enums";
 
 // Template Form Schema
@@ -30,7 +30,10 @@ export const categoryFormSchema = z.object({
   slug: z
     .string()
     .min(1, "Slug harus diisi")
-    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug harus lowercase dan gunakan dash (-)"),
+    .regex(
+      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+      "Slug harus lowercase dan gunakan dash (-)"
+    ),
   description: z.string().optional(),
   image: z.string().url("URL gambar tidak valid").optional().or(z.literal("")),
   is_active: z.boolean(),
@@ -48,7 +51,11 @@ export const orderFormSchema = z.object({
   customer_phone: z.string().optional(),
   status: z.nativeEnum(OrderStatus),
   payment_method: z.string().optional(),
-  payment_proof: z.string().url("URL bukti pembayaran tidak valid").optional().or(z.literal("")),
+  payment_proof: z
+    .string()
+    .url("URL bukti pembayaran tidak valid")
+    .optional()
+    .or(z.literal("")),
   notes: z.string().optional(),
 });
 

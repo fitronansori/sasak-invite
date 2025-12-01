@@ -1,27 +1,12 @@
-
 "use client";
 
 import { useState } from "react";
-import { MoreHorizontal, Pencil, Trash2, Eye } from "lucide-react";
+
+import { Eye, MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { formatCurrency } from "@/lib/utils";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -32,6 +17,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Select,
   SelectContent,
@@ -39,13 +33,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 import { deleteOrder, updateOrderStatus } from "@/actions/dash-order-action";
-import { OrderStatus } from "@/generated/prisma/enums";
 import type { OrderWithItems } from "@/actions/dash-order-action";
+import { OrderStatus } from "@/generated/prisma/enums";
+
 import { EditOrderDialog } from "./EditOrderDialog";
 import { ViewOrderDialog } from "./ViewOrderDialog";
-import { formatCurrency } from "@/lib/utils";
 
 type OrdersTableProps = {
   orders: OrderWithItems[];
@@ -70,7 +72,9 @@ const statusLabels: Record<OrderStatus, string> = {
 };
 
 export function OrdersTable({ orders }: OrdersTableProps) {
-  const [selectedOrder, setSelectedOrder] = useState<OrderWithItems | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<OrderWithItems | null>(
+    null
+  );
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [showViewDialog, setShowViewDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);

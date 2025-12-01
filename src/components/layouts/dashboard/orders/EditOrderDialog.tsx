@@ -1,11 +1,12 @@
-
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -22,8 +23,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -31,11 +30,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 import { updateOrder } from "@/actions/dash-order-action";
-import { orderFormSchema, type OrderFormValues } from "@/constants/formSchema";
-import { OrderStatus } from "@/generated/prisma/enums";
 import type { OrderWithItems } from "@/actions/dash-order-action";
+import { type OrderFormValues, orderFormSchema } from "@/constants/formSchema";
+import { OrderStatus } from "@/generated/prisma/enums";
 
 type EditOrderDialogProps = {
   order: OrderWithItems;

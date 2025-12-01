@@ -1,6 +1,6 @@
+import { OrdersDashboard } from "@/components/layouts/dashboard/orders";
 
 import { getAllOrders, getOrdersStats } from "@/actions/dash-order-action";
-import { OrdersDashboard } from "@/components/layouts/dashboard/orders";
 import { OrderStatus } from "@/generated/prisma/enums";
 
 type SearchParams = Promise<{

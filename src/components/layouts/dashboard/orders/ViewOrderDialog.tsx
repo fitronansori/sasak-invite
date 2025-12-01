@@ -1,6 +1,9 @@
-
 "use client";
 
+import { formatCurrency } from "@/lib/utils";
+
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -8,13 +11,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Card, CardContent } from "@/components/ui/card";
 
-import { OrderStatus } from "@/generated/prisma/enums";
 import type { OrderWithItems } from "@/actions/dash-order-action";
-import { formatCurrency } from "@/lib/utils";
+import { OrderStatus } from "@/generated/prisma/enums";
 
 type ViewOrderDialogProps = {
   order: OrderWithItems;
@@ -57,7 +57,7 @@ export function ViewOrderDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Detail Order</DialogTitle>
           <DialogDescription>
@@ -71,24 +71,26 @@ export function ViewOrderDialog({
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-muted-foreground">No. Order</p>
-                  <p className="font-mono font-semibold">{order.order_number}</p>
+                  <p className="text-muted-foreground text-sm">No. Order</p>
+                  <p className="font-mono font-semibold">
+                    {order.order_number}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Status</p>
-                  <Badge
-                    className={`${statusColors[order.status]} mt-1`}
-                  >
+                  <p className="text-muted-foreground text-sm">Status</p>
+                  <Badge className={`${statusColors[order.status]} mt-1`}>
                     {statusLabels[order.status]}
                   </Badge>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Tanggal Order</p>
+                  <p className="text-muted-foreground text-sm">Tanggal Order</p>
                   <p className="font-medium">{formatDate(order.created_at)}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Pembayaran</p>
-                  <p className="text-lg font-bold text-primary">
+                  <p className="text-muted-foreground text-sm">
+                    Total Pembayaran
+                  </p>
+                  <p className="text-primary text-lg font-bold">
                     {formatCurrency(order.total_amount)}
                   </p>
                 </div>
@@ -105,16 +107,18 @@ export function ViewOrderDialog({
               <CardContent>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-sm text-muted-foreground">Nama</p>
+                    <p className="text-muted-foreground text-sm">Nama</p>
                     <p className="font-medium">{order.customer_name}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Email</p>
+                    <p className="text-muted-foreground text-sm">Email</p>
                     <p className="font-medium">{order.customer_email}</p>
                   </div>
                   {order.customer_phone && (
                     <div>
-                      <p className="text-sm text-muted-foreground">No. Telepon</p>
+                      <p className="text-muted-foreground text-sm">
+                        No. Telepon
+                      </p>
                       <p className="font-medium">{order.customer_phone}</p>
                     </div>
                   )}
@@ -133,18 +137,22 @@ export function ViewOrderDialog({
                 <div className="space-y-3">
                   {order.payment_method && (
                     <div>
-                      <p className="text-sm text-muted-foreground">Metode Pembayaran</p>
+                      <p className="text-muted-foreground text-sm">
+                        Metode Pembayaran
+                      </p>
                       <p className="font-medium">{order.payment_method}</p>
                     </div>
                   )}
                   {order.payment_proof && (
                     <div>
-                      <p className="text-sm text-muted-foreground">Bukti Pembayaran</p>
+                      <p className="text-muted-foreground text-sm">
+                        Bukti Pembayaran
+                      </p>
                       <a
                         href={order.payment_proof}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary underline hover:text-primary/80"
+                        className="text-primary hover:text-primary/80 underline"
                       >
                         Lihat Bukti
                       </a>
@@ -152,8 +160,12 @@ export function ViewOrderDialog({
                   )}
                   {order.lynk_id_transaction_id && (
                     <div>
-                      <p className="text-sm text-muted-foreground">ID Transaksi Lynk.id</p>
-                      <p className="font-mono text-sm">{order.lynk_id_transaction_id}</p>
+                      <p className="text-muted-foreground text-sm">
+                        ID Transaksi Lynk.id
+                      </p>
+                      <p className="font-mono text-sm">
+                        {order.lynk_id_transaction_id}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -169,7 +181,9 @@ export function ViewOrderDialog({
                 <h3 className="mb-3 text-lg font-semibold">Catatan</h3>
                 <Card>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{order.notes}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {order.notes}
+                    </p>
                   </CardContent>
                 </Card>
               </div>
@@ -190,9 +204,12 @@ export function ViewOrderDialog({
                       <CardContent>
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-medium">{item.template?.title || "Template"}</p>
-                            <p className="text-sm text-muted-foreground">
-                              Qty: {item.quantity} × {formatCurrency(item.price)}
+                            <p className="font-medium">
+                              {item.template?.title || "Template"}
+                            </p>
+                            <p className="text-muted-foreground text-sm">
+                              Qty: {item.quantity} ×{" "}
+                              {formatCurrency(item.price)}
                             </p>
                           </div>
                           <p className="font-semibold">
