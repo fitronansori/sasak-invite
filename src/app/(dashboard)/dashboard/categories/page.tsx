@@ -1,3 +1,4 @@
+import { DashboardPageHeader } from "@/components/layouts/dashboard/DashboardPageHeader";
 import { CategoriesDashboard } from "@/components/layouts/dashboard/categories";
 
 import {
@@ -13,12 +14,10 @@ export default async function DashboardCategoriesPage() {
 
   return (
     <div className="dashboard-container space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Kategori</h1>
-        <p className="text-muted-foreground">
-          Kelola kategori template undangan Anda
-        </p>
-      </div>
+      <DashboardPageHeader
+        title="Kategori"
+        description="Kelola kategori template undangan Anda"
+      />
 
       <CategoriesDashboard categories={categories} stats={stats} />
     </div>

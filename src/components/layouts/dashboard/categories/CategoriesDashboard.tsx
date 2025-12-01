@@ -3,8 +3,8 @@
 import type { CategoryModel } from "@/generated/prisma/models";
 
 import { CategoriesTable } from "./CategoriesTable";
+import { CategoryActions } from "./CategoryActions";
 import { CategoryStats } from "./CategoryStats";
-import { CreateCategoryDialog } from "./CreateCategoryDialog";
 
 type CategoriesDashboardProps = {
   categories: CategoryModel[];
@@ -27,9 +27,7 @@ export function CategoriesDashboard({
         inactive={stats.inactive}
       />
 
-      <div className="flex items-center justify-end">
-        <CreateCategoryDialog />
-      </div>
+      <CategoryActions />
 
       <CategoriesTable categories={categories} />
     </div>
