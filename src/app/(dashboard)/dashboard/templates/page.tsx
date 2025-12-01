@@ -1,10 +1,10 @@
-import { TemplatesDashboard } from "@/components/layouts/dashboard/templates/TemplatesDashboard";
-
 import { getActiveCategories } from "@/actions/dash-category-action";
 import {
   getAllTemplates,
   getTemplatesStats,
 } from "@/actions/dash-template-action";
+import { DashboardPageHeader } from "@/components/layouts/dashboard/DashboardPageHeader";
+import { TemplatesDashboard } from "@/components/layouts/dashboard/templates/TemplatesDashboard";
 
 type SearchParams = Promise<{
   page?: string;
@@ -32,10 +32,10 @@ export default async function DashboardTemplatesPage(props: {
 
   return (
     <div className="dashboard-container space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Template</h1>
-        <p className="text-muted-foreground">Kelola template undangan Anda</p>
-      </div>
+      <DashboardPageHeader
+        title="Template"
+        description="Kelola template undangan Anda"
+      />
 
       <TemplatesDashboard
         templates={result.templates}
