@@ -21,3 +21,17 @@ export const templateFormSchema = z.object({
 });
 
 export type TemplateFormValues = z.infer<typeof templateFormSchema>;
+
+// Category Form Schema
+export const categoryFormSchema = z.object({
+  name: z.string().min(1, "Nama kategori harus diisi"),
+  slug: z
+    .string()
+    .min(1, "Slug harus diisi")
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug harus lowercase dan gunakan dash (-)"),
+  description: z.string().optional(),
+  image: z.string().url("URL gambar tidak valid").optional().or(z.literal("")),
+  is_active: z.boolean(),
+});
+
+export type CategoryFormValues = z.infer<typeof categoryFormSchema>;

@@ -146,3 +146,31 @@ export const TEMPLATE_STATS_CONFIG: TemplateStatConfig[] = [
     bgColor: "bg-yellow-100",
   },
 ];
+
+export type CategoryStatConfig = {
+  title: string;
+  icon: ComponentType<{ className?: string }>;
+  color: string;
+  bgColor: string;
+};
+
+export const CATEGORY_STATS_CONFIG: CategoryStatConfig[] = [
+  {
+    title: "Total Kategori",
+    icon: FileText,
+    color: "text-purple-600",
+    bgColor: "bg-purple-100",
+  },
+  {
+    title: "Kategori Aktif",
+    icon: CheckCircle,
+    color: "text-green-600",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "Kategori Nonaktif",
+    icon: XCircle,
+    color: "text-gray-600",
+    bgColor: "bg-gray-100",
+  },
+];
