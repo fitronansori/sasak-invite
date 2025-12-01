@@ -75,14 +75,6 @@ export const DASHBOARD_STATS: DashboardStat[] = [
     color: "text-purple-600",
     bgColor: "bg-purple-50",
   },
-  {
-    title: "Total Pengunjung",
-    value: "1,234",
-    icon: TrendingUp,
-    trend: "+45 hari ini",
-    color: "text-orange-600",
-    bgColor: "bg-orange-50",
-  },
 ];
 
 export type QuickAction = {
@@ -95,14 +87,6 @@ export type QuickAction = {
 };
 
 export const QUICK_ACTIONS: QuickAction[] = [
-  {
-    title: "Buat Template Baru",
-    description: "Tambahkan template undangan baru",
-    icon: Plus,
-    href: "/dashboard/templates/create",
-    color: "text-blue-600",
-    bgColor: "bg-blue-50",
-  },
   {
     title: "Lihat Semua Template",
     description: "Kelola template yang ada",
