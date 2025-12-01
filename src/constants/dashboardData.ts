@@ -220,3 +220,101 @@ export const ORDER_STATS_CONFIG: OrderStatConfig[] = [
     bgColor: "bg-red-100",
   },
 ];
+
+// Analytics chart configuration
+export const CHART_CONFIG = {
+  revenue: {
+    label: "Revenue",
+    color: "#10b981",
+  },
+  orders: {
+    label: "Orders",
+    color: "#3b82f6",
+  },
+};
+
+export const ORDER_STATUS_COLORS: Record<string, string> = {
+  PENDING: "#f59e0b",
+  PROCESSING: "#3b82f6",
+  PAID: "#10b981",
+  COMPLETED: "#059669",
+  CANCELLED: "#ef4444",
+  REFUNDED: "#6366f1",
+};
+
+export const ORDER_STATUS_LABELS: Record<string, string> = {
+  PENDING: "Menunggu",
+  PROCESSING: "Diproses",
+  PAID: "Dibayar",
+  COMPLETED: "Selesai",
+  CANCELLED: "Dibatalkan",
+  REFUNDED: "Dikembalikan",
+};
+
+// Analytics overview stats configuration
+export type AnalyticsOverviewStatConfig = {
+  key: string;
+  titleKey: keyof AnalyticsOverviewData;
+  getSubtitle: (data: AnalyticsOverviewData) => string;
+  icon: ComponentType<{ className?: string }>;
+  color: string;
+  bgColor: string;
+  formatValue?: (value: number) => string | number;
+};
+
+export type AnalyticsOverviewData = {
+  total_templates: number;
+  total_categories: number;
+  total_orders: number;
+  total_revenue: number;
+  active_templates: number;
+  completed_orders: number;
+};
+
+export const ANALYTICS_OVERVIEW_CONFIG: AnalyticsOverviewStatConfig[] = [
+  {
+    key: "total_templates",
+    titleKey: "total_templates" as keyof AnalyticsOverviewData,
+    getSubtitle: (data) => `${data.active_templates} aktif`,
+    icon: LayoutTemplate,
+    color: "text-blue-600",
+    bgColor: "bg-blue-50",
+  },
+  {
+    key: "total_categories",
+    titleKey: "total_categories" as keyof AnalyticsOverviewData,
+    getSubtitle: () => "Kategori tersedia",
+    icon: FileText,
+    color: "text-purple-600",
+    bgColor: "bg-purple-50",
+  },
+  {
+    key: "total_orders",
+    titleKey: "total_orders" as keyof AnalyticsOverviewData,
+    getSubtitle: (data) => `${data.completed_orders} selesai`,
+    icon: ShoppingBag,
+    color: "text-green-600",
+    bgColor: "bg-green-50",
+  },
+  {
+    key: "total_revenue",
+    titleKey: "total_revenue" as keyof AnalyticsOverviewData,
+    getSubtitle: () => "Dari pesanan selesai",
+    icon: TrendingUp,
+    color: "text-emerald-600",
+    bgColor: "bg-emerald-50",
+    formatValue: (value: number) =>
+      new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+      }).format(value),
+  },
+];
+
+export const ANALYTICS_STAT_TITLES: Record<string, string> = {
+  total_templates: "Total Template",
+  total_categories: "Total Kategori",
+  total_orders: "Total Pesanan",
+  total_revenue: "Total Revenue",
+};
