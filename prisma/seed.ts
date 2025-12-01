@@ -113,8 +113,7 @@ async function main() {
       price: 175000,
       discount_price: 150000,
       image: "https://placehold.co/600x600/8b4513/white.png?text=Javanese",
-      thumbnail:
-        "https://placehold.co/400x400/8b4513/white.png?text=Javanese",
+      thumbnail: "https://placehold.co/400x400/8b4513/white.png?text=Javanese",
       preview_images: [
         "https://placehold.co/900x1600/8b4513/white.png?text=Preview+1",
         "https://placehold.co/900x1600/a0522d/white.png?text=Preview+2",
@@ -175,7 +174,8 @@ async function main() {
       description:
         "Template undangan ulang tahun dewasa dengan desain yang sophisticated",
       price: 100000,
-      image: "https://placehold.co/600x600/4169e1/white.png?text=Adult+Birthday",
+      image:
+        "https://placehold.co/600x600/4169e1/white.png?text=Adult+Birthday",
       thumbnail:
         "https://placehold.co/400x400/4169e1/white.png?text=Adult+Birthday",
       preview_images: [
@@ -192,12 +192,10 @@ async function main() {
     },
     {
       title: "Sweet Sixteen Birthday",
-      description:
-        "Template undangan ulang tahun sweet seventeen yang glamour",
+      description: "Template undangan ulang tahun sweet seventeen yang glamour",
       price: 95000,
       image: "https://placehold.co/600x600/ff1493/white.png?text=Sweet+16",
-      thumbnail:
-        "https://placehold.co/400x400/ff1493/white.png?text=Sweet+16",
+      thumbnail: "https://placehold.co/400x400/ff1493/white.png?text=Sweet+16",
       preview_images: [
         "https://placehold.co/900x1600/ff1493/white.png?text=Preview+1",
         "https://placehold.co/900x1600/ff69b4/white.png?text=Preview+2",
@@ -277,8 +275,7 @@ async function main() {
       price: 80000,
       discount_price: 65000,
       image: "https://placehold.co/600x600/ffc0cb/333.png?text=Baby+Shower",
-      thumbnail:
-        "https://placehold.co/400x400/ffc0cb/333.png?text=Baby+Shower",
+      thumbnail: "https://placehold.co/400x400/ffc0cb/333.png?text=Baby+Shower",
       preview_images: [
         "https://placehold.co/900x1600/ffc0cb/333.png?text=Preview+1",
         "https://placehold.co/900x1600/ffb6c1/333.png?text=Preview+2",
