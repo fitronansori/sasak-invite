@@ -174,3 +174,49 @@ export const CATEGORY_STATS_CONFIG: CategoryStatConfig[] = [
     bgColor: "bg-gray-100",
   },
 ];
+
+export type OrderStatConfig = {
+  title: string;
+  description: string;
+  icon: ComponentType<{ className?: string }>;
+  color: string;
+  bgColor: string;
+};
+
+export const ORDER_STATS_CONFIG: OrderStatConfig[] = [
+  {
+    title: "Total Order",
+    description: "Semua order",
+    icon: ShoppingBag,
+    color: "text-blue-600",
+    bgColor: "bg-blue-100",
+  },
+  {
+    title: "Total Revenue",
+    description: "Order selesai & dibayar",
+    icon: TrendingUp,
+    color: "text-green-600",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "Menunggu",
+    description: "Order pending",
+    icon: Plus,
+    color: "text-yellow-600",
+    bgColor: "bg-yellow-100",
+  },
+  {
+    title: "Selesai",
+    description: "Order selesai",
+    icon: CheckCircle,
+    color: "text-emerald-600",
+    bgColor: "bg-emerald-100",
+  },
+  {
+    title: "Dibatalkan",
+    description: "Order dibatalkan",
+    icon: XCircle,
+    color: "text-red-600",
+    bgColor: "bg-red-100",
+  },
+];

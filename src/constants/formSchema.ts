@@ -1,4 +1,6 @@
+
 import { z } from "zod";
+import { OrderStatus } from "@/generated/prisma/enums";
 
 // Template Form Schema
 export const templateFormSchema = z.object({
@@ -35,3 +37,19 @@ export const categoryFormSchema = z.object({
 });
 
 export type CategoryFormValues = z.infer<typeof categoryFormSchema>;
+
+// Order Form Schema
+export const orderFormSchema = z.object({
+  customer_name: z.string().min(1, "Nama pelanggan wajib diisi"),
+  customer_email: z
+    .string()
+    .min(1, "Email pelanggan wajib diisi")
+    .email("Format email tidak valid"),
+  customer_phone: z.string().optional(),
+  status: z.nativeEnum(OrderStatus),
+  payment_method: z.string().optional(),
+  payment_proof: z.string().url("URL bukti pembayaran tidak valid").optional().or(z.literal("")),
+  notes: z.string().optional(),
+});
+
+export type OrderFormValues = z.infer<typeof orderFormSchema>;
