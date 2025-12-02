@@ -26,7 +26,7 @@ export default async function Header() {
           <Logo />
         </div>
 
-        <nav className={cn("hidden items-center gap-6 text-base md:flex")}>
+        <nav className={cn("hidden items-center gap-6 text-base lg:flex")}>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -41,7 +41,7 @@ export default async function Header() {
         <div className={cn("flex items-center gap-2")}>
           <MobileMenu isAuthenticated={!!user} />
 
-          <div className={cn("hidden items-center md:flex")}>
+          <div className={cn("hidden items-center lg:flex")}>
             {user ? (
               <div className="flex items-center gap-2">
                 <Button size={"lg"} asChild>

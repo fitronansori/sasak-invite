@@ -30,7 +30,7 @@ const MobileMenu = ({ isAuthenticated }: MobileMenuProps) => {
           variant="ghost"
           size="icon"
           aria-label="Buka menu"
-          className={cn("md:hidden")}
+          className={cn("lg:hidden")}
         >
           <Menu className={cn("size-5")} />
         </Button>
