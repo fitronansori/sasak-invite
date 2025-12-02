@@ -16,6 +16,7 @@ type Props = {
   price: number;
   discount_price?: number;
   demo_url?: string;
+  priority?: boolean;
 };
 
 export default function TemplateCard({
@@ -25,6 +26,7 @@ export default function TemplateCard({
   price,
   discount_price,
   demo_url,
+  priority = false,
 }: Props) {
   return (
     <Card className="overflow-hidden py-0">
@@ -38,6 +40,8 @@ export default function TemplateCard({
                 fill
                 className="object-cover transition-transform hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={priority}
+                loading={priority ? "eager" : "lazy"}
               />
             ) : (
               <div className="from-primary/20 to-chart-4/30 h-full w-full bg-linear-to-br transition-transform hover:scale-105" />
@@ -74,6 +78,7 @@ export default function TemplateCard({
                 <ShoppingCart className="size-4" /> Pesan
               </Link>
             </Button>
+
             {demo_url && (
               <Button size="sm" variant="outline" asChild>
                 <a href={demo_url} target="_blank" rel="noopener noreferrer">
