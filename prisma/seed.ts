@@ -61,7 +61,7 @@ async function main() {
   console.log(`✅ Created ${categories.length} categories`);
 
   // Create Templates
-  
+
   console.log("🎨 Creating templates...");
   const templates = [
     // Wedding Templates
@@ -297,7 +297,7 @@ async function main() {
   console.log(`✅ Created ${templates.length} templates`);
 
   // Create Sample Orders
-  
+
   console.log("📋 Creating sample orders...");
   const orders = [
     {
@@ -424,7 +424,7 @@ async function main() {
   ];
 
   // Note: Simplified order creation since we need to create templates first
-  
+
   const createdTemplates = await prisma.template.findMany();
 
   for (let i = 0; i < orders.length; i++) {

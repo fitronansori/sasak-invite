@@ -65,7 +65,7 @@ const MobileMenu = ({ isAuthenticated }: MobileMenuProps) => {
               >
                 Konsultasi
               </Link>
-              
+
               <Link
                 href={"/dashboard"}
                 className={cn("hover:text-primary w-full")}
