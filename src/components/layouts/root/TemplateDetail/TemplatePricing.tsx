@@ -33,7 +33,8 @@ export default function TemplatePricing({
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground mb-2 text-sm">Harga</p>
-            <div className="flex items-center gap-3">
+            
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="text-primary text-3xl font-bold">
                 {formatCurrency(finalPrice)}
               </span>
@@ -49,7 +50,7 @@ export default function TemplatePricing({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Button size="lg" className="flex-1" asChild>
               <Link href={lynk_id_url} target="_blank">
                 <ShoppingCart className="size-5" />

@@ -68,8 +68,8 @@ export default function TemplateImageGallery({
       </CarouselContent>
       {preview_images && preview_images.length > 1 && (
         <>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
+          <CarouselPrevious className="left-2 lg:left-4" />
+          <CarouselNext className="right-2 lg:right-4" />
         </>
       )}
     </Carousel>
