@@ -2,39 +2,89 @@
 
 import { prisma } from "@/lib/prisma";
 
-import type { CategoryModel, TemplateModel } from "../generated/prisma/models";
-
-// Menggunakan type yang sudah di-generate Prisma
-export type TemplateWithCategory = TemplateModel & {
-  category: Pick<
-    CategoryModel,
-    "id" | "name" | "slug" | "description" | "image"
-  >;
-};
-
-export async function getTemplates(): Promise<TemplateWithCategory[]> {
+export async function getTemplates() {
   try {
     const templates = await prisma.template.findMany({
       where: {
         is_active: true,
       },
       include: {
-        category: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
-            description: true,
-            image: true,
-          },
-        },
+        category: true,
       },
-      orderBy: [{ is_featured: "desc" }, { created_at: "desc" }],
+      orderBy: {
+        created_at: "desc",
+      },
     });
 
-    return templates;
+    return {
+      success: true,
+      data: templates,
+    };
   } catch (error) {
     console.error("Error fetching templates:", error);
-    throw new Error("Failed to fetch templates");
+    return {
+      success: false,
+      error: "Gagal mengambil data template",
+    };
+  }
+}
+
+export async function getFeaturedTemplates() {
+  try {
+    const templates = await prisma.template.findMany({
+      where: {
+        is_active: true,
+        is_featured: true,
+      },
+      include: {
+        category: true,
+      },
+      take: 6,
+      orderBy: {
+        created_at: "desc",
+      },
+    });
+
+    return {
+      success: true,
+      data: templates,
+    };
+  } catch (error) {
+    console.error("Error fetching featured templates:", error);
+    return {
+      success: false,
+      error: "Gagal mengambil data template unggulan",
+    };
+  }
+}
+
+export async function getTemplateById(id: string) {
+  try {
+    const template = await prisma.template.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        category: true,
+      },
+    });
+
+    if (!template) {
+      return {
+        success: false,
+        error: "Template tidak ditemukan",
+      };
+    }
+
+    return {
+      success: true,
+      data: template,
+    };
+  } catch (error) {
+    console.error("Error fetching template:", error);
+    return {
+      success: false,
+      error: "Gagal mengambil data template",
+    };
   }
 }

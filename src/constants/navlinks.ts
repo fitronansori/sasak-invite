@@ -4,7 +4,7 @@ export type NavLink = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Template", href: "/#templates" },
+  { label: "Template", href: "/templates" },
   { label: "Fitur", href: "/#features" },
   { label: "Harga", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
