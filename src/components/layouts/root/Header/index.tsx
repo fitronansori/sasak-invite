@@ -6,6 +6,7 @@ import { MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import Logo from "@/components/common/Logo";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 
 import { NAV_LINKS } from "@/constants/navlinks";
@@ -48,12 +49,10 @@ export default async function Header() {
                   <Link href={"/dashboard"}>Dashboard</Link>
                 </Button>
 
-                <Button size={"lg"} asChild>
-                  <Link href={"/"} className="inline-flex items-center">
-                    <MessageSquare className="size-4" />
-                    Konsultasi
-                  </Link>
-                </Button>
+                <WhatsAppButton variant="default">
+                  <MessageSquare className="size-4" />
+                  Konsultasi
+                </WhatsAppButton>
               </div>
             ) : (
               <Button size={"lg"} asChild>

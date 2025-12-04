@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 import { CalendarDays, Share2, Sparkles } from "lucide-react";
 
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 
 import ShowcaseCard from "./ShowcaseCard";
@@ -30,10 +33,10 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Button size="lg">Buat Undangan</Button>
-            <Button variant="ghost" size="lg">
-              Lihat Demo
+            <Button size="lg" asChild>
+              <Link href={"/templates"}>Buat Undangan</Link>
             </Button>
+            <WhatsAppButton />
           </div>
 
           <div className="text-muted-foreground mt-4 flex flex-wrap gap-4 text-sm">
