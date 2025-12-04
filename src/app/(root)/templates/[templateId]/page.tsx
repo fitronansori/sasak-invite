@@ -42,7 +42,7 @@ const TemplateDetailPage = async ({ params }: TemplateDetailPageProps) => {
       </Button>
 
       {/* Main Content */}
-      <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* Image Gallery */}
         <div className="lg:col-span-2">
           <TemplateImageGallery

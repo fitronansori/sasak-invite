@@ -33,8 +33,8 @@ export default function TemplatePricing({
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground mb-2 text-sm">Harga</p>
-            
-            <div className="flex items-center gap-3 flex-wrap">
+
+            <div className="flex flex-wrap items-center gap-3">
               <span className="text-primary text-3xl font-bold">
                 {formatCurrency(finalPrice)}
               </span>
