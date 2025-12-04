@@ -24,6 +24,7 @@ export default function TemplatesGrid({ templates }: TemplatesGridProps) {
           image={template.thumbnail || template.image || undefined}
           price={template.price}
           discount_price={template.discount_price || undefined}
+          lynk_id_url={template.lynk_id_url || undefined}
           demo_url={template.demo_url || undefined}
           priority={index < 4}
         />

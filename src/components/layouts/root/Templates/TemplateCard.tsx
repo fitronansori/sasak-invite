@@ -15,6 +15,7 @@ type Props = {
   image?: string;
   price: number;
   discount_price?: number;
+  lynk_id_url?: string;
   demo_url?: string;
   priority?: boolean;
 };
@@ -25,6 +26,7 @@ export default function TemplateCard({
   image,
   price,
   discount_price,
+  lynk_id_url,
   demo_url,
   priority = false,
 }: Props) {
@@ -74,16 +76,20 @@ export default function TemplateCard({
 
           <div className="flex items-center gap-2">
             <Button size="sm" className="flex-1" asChild>
-              <Link href={`/templates/${id}`}>
+              <Link
+                href={lynk_id_url || `templates/${id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <ShoppingCart className="size-4" /> Pesan
               </Link>
             </Button>
 
             {demo_url && (
               <Button size="sm" variant="outline" asChild>
-                <a href={demo_url} target="_blank" rel="noopener noreferrer">
+                <Link href={demo_url} target="_blank" rel="noopener noreferrer">
                   <Eye className="size-4" /> Demo
-                </a>
+                </Link>
               </Button>
             )}
           </div>
