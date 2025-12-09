@@ -93,8 +93,8 @@ export type SocialItem = {
 
 export const FOOTER_SOCIALS: SocialItem[] = [
   { label: "Website", href: "/", icon: Globe },
-  { label: "Instagram", href: "/", icon: Instagram },
-  { label: "Facebook", href: "/", icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/sasakinvite/", icon: Instagram },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61584731785831", icon: Facebook },
 ];
 
 export type LegalLink = { label: string; href: string };
