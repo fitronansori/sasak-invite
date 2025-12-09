@@ -8,21 +8,22 @@ import {
   deleteCategory,
   toggleCategoryStatus,
 } from "@/actions/dash-category-action";
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 export function useCategoryTable() {
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryModel | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null
+  );
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleEdit = (category: CategoryModel) => {
+  const handleEdit = (category: Category) => {
     setSelectedCategory(category);
     setShowEditDialog(true);
   };
 
-  const handleDelete = (category: CategoryModel) => {
+  const handleDelete = (category: Category) => {
     setSelectedCategory(category);
     setShowDeleteDialog(true);
   };
@@ -43,10 +44,7 @@ export function useCategoryTable() {
     setIsDeleting(false);
   };
 
-  const handleToggleStatus = async (
-    category: CategoryModel,
-    checked: boolean
-  ) => {
+  const handleToggleStatus = async (category: Category, checked: boolean) => {
     const result = await toggleCategoryStatus(category.id, checked);
 
     if (result.success) {

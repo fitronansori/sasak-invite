@@ -1,10 +1,10 @@
-import type { TemplateModel } from "@/generated/prisma/models";
+import type { Template } from "@/generated/prisma";
 
 import EmptyState from "./EmptyState";
 import TemplatesGrid from "./TemplatesGrid";
 import TemplatesPagination from "./TemplatesPagination";
 
-type TemplateWithCategory = TemplateModel & {
+type TemplateWithCategory = Template & {
   category: {
     id: string;
     name: string;

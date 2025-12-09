@@ -1,10 +1,10 @@
-import type { TemplateModel } from "@/generated/prisma/models";
+import type { Template } from "@/generated/prisma";
 
 import TemplateCard from "./TemplateCard";
 
 interface TemplatesGridProps {
   templates: Array<
-    TemplateModel & {
+    Template & {
       category: {
         id: string;
         name: string;

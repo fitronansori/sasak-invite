@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 // Template Form Schema
 export const templateFormSchema = z.object({

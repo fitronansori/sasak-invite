@@ -3,10 +3,10 @@
 import TemplatesList from "@/components/layouts/root/Templates/TemplatesList";
 import TemplatesFilter from "@/components/layouts/root/TemplatesFilter";
 
-import type { CategoryModel, TemplateModel } from "@/generated/prisma/models";
+import type { Category, Template } from "@/generated/prisma";
 import { useRootTemplates } from "@/hooks/use-root-templates";
 
-type TemplateWithCategory = TemplateModel & {
+type TemplateWithCategory = Template & {
   category: {
     id: string;
     name: string;
@@ -21,7 +21,7 @@ interface TemplatesContainerProps {
     total: number;
     total_pages: number;
   };
-  categories: CategoryModel[];
+  categories: Category[];
 }
 
 export default function TemplatesContainer({

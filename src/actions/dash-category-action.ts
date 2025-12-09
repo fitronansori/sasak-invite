@@ -6,10 +6,10 @@ import { auth } from "@clerk/nextjs/server";
 
 import { prisma } from "@/lib/prisma";
 
-import type { CategoryModel } from "../generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 // Get all categories
-export async function getAllCategories(): Promise<CategoryModel[]> {
+export async function getAllCategories(): Promise<Category[]> {
   try {
     const categories = await prisma.category.findMany({
       orderBy: { created_at: "desc" },
@@ -23,7 +23,7 @@ export async function getAllCategories(): Promise<CategoryModel[]> {
 }
 
 // Get active categories only
-export async function getActiveCategories(): Promise<CategoryModel[]> {
+export async function getActiveCategories(): Promise<Category[]> {
   try {
     const categories = await prisma.category.findMany({
       where: { is_active: true },

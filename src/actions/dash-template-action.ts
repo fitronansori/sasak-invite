@@ -6,14 +6,11 @@ import { auth } from "@clerk/nextjs/server";
 
 import { prisma } from "@/lib/prisma";
 
-import type { CategoryModel, TemplateModel } from "../generated/prisma/models";
+import type { Category, Template } from "@/generated/prisma";
 
 // Types
-export type TemplateWithCategory = TemplateModel & {
-  category: Pick<
-    CategoryModel,
-    "id" | "name" | "slug" | "description" | "image"
-  >;
+export type TemplateWithCategory = Template & {
+  category: Pick<Category, "id" | "name" | "slug" | "description" | "image">;
 };
 
 export type CreateTemplateInput = {

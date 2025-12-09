@@ -13,10 +13,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 interface TemplatesFilterProps {
-  categories: CategoryModel[];
+  categories: Category[];
   onSearchChange: (query: string) => void;
   onCategoryChange: (categoryId: string) => void;
 }
