@@ -14,7 +14,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import type { OrderWithItems } from "@/actions/dash-order-action";
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 type ViewOrderDialogProps = {
   order: OrderWithItems;

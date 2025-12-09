@@ -2,11 +2,11 @@ import { TemplatesPagination } from "@/components/layouts/dashboard/templates/Te
 import { TemplatesTable } from "@/components/layouts/dashboard/templates/TemplatesTable";
 
 import type { TemplateWithCategory } from "@/actions/dash-template-action";
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 type TemplatesContentProps = {
   templates: TemplateWithCategory[];
-  categories: CategoryModel[];
+  categories: Category[];
   pagination: {
     page: number;
     limit: number;

@@ -33,12 +33,12 @@ import {
   type CategoryFormValues,
   categoryFormSchema,
 } from "@/constants/formSchema";
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 type FormData = CategoryFormValues;
 
 type EditCategoryDialogProps = {
-  category: CategoryModel;
+  category: Category;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };

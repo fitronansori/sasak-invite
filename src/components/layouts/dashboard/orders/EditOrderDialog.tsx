@@ -35,7 +35,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { updateOrder } from "@/actions/dash-order-action";
 import type { OrderWithItems } from "@/actions/dash-order-action";
 import { type OrderFormValues, orderFormSchema } from "@/constants/formSchema";
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 type EditOrderDialogProps = {
   order: OrderWithItems;

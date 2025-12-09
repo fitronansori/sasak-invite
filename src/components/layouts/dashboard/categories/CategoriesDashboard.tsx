@@ -1,13 +1,13 @@
 "use client";
 
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 import { CategoriesTable } from "./CategoriesTable";
 import { CategoryActions } from "./CategoryActions";
 import { CategoryStats } from "./CategoryStats";
 
 type CategoriesDashboardProps = {
-  categories: CategoryModel[];
+  categories: Category[];
   stats: {
     total: number;
     active: number;

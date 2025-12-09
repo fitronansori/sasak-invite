@@ -41,11 +41,11 @@ import {
   type TemplateFormValues,
   templateFormSchema,
 } from "@/constants/formSchema";
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 type EditTemplateDialogProps = {
   template: TemplateWithCategory | null;
-  categories: CategoryModel[];
+  categories: Category[];
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };

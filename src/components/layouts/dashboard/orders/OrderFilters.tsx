@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 type OrderFiltersProps = {
   onSearchChange: (query: string) => void;

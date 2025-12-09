@@ -9,11 +9,11 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 type DeleteCategoryDialogProps = {
   open: boolean;
-  category: CategoryModel | null;
+  category: Category | null;
   isDeleting: boolean;
   onOpenChange: (open: boolean) => void;
   onConfirm: () => void;

@@ -2,7 +2,7 @@ import { DashboardPageHeader } from "@/components/layouts/dashboard/DashboardPag
 import { OrdersDashboard } from "@/components/layouts/dashboard/orders";
 
 import { getAllOrders, getOrdersStats } from "@/actions/dash-order-action";
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 type SearchParams = Promise<{
   page?: string;

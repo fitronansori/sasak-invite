@@ -6,19 +6,14 @@ import { auth } from "@clerk/nextjs/server";
 
 import { prisma } from "@/lib/prisma";
 
-import { OrderStatus } from "@/generated/prisma/enums";
-import type {
-  CategoryModel,
-  OrderItemModel,
-  OrderModel,
-  TemplateModel,
-} from "@/generated/prisma/models";
+import { OrderStatus } from "@/generated/prisma";
+import type { Category, Order, OrderItem, Template } from "@/generated/prisma";
 
 // Extended types with relations
-export type OrderWithItems = OrderModel & {
-  order_items: (OrderItemModel & {
-    template: TemplateModel & {
-      category: CategoryModel;
+export type OrderWithItems = Order & {
+  order_items: (OrderItem & {
+    template: Template & {
+      category: Category;
     };
   })[];
 };

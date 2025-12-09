@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 export type DashboardStats = {
   total_templates: number;

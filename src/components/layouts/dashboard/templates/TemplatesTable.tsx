@@ -52,13 +52,13 @@ import {
   toggleTemplateFeatured,
   toggleTemplateStatus,
 } from "@/actions/dash-template-action";
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 import { EditTemplateDialog } from "./EditTemplateDialog";
 
 type TemplatesTableProps = {
   templates: TemplateWithCategory[];
-  categories: CategoryModel[];
+  categories: Category[];
 };
 
 export function TemplatesTable({ templates, categories }: TemplatesTableProps) {

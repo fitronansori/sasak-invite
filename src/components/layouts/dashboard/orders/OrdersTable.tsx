@@ -44,7 +44,7 @@ import {
 
 import { deleteOrder, updateOrderStatus } from "@/actions/dash-order-action";
 import type { OrderWithItems } from "@/actions/dash-order-action";
-import { OrderStatus } from "@/generated/prisma/enums";
+import { OrderStatus } from "@/generated/prisma";
 
 import { EditOrderDialog } from "./EditOrderDialog";
 import { ViewOrderDialog } from "./ViewOrderDialog";

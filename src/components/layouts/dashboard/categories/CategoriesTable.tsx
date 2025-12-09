@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 import { useCategoryTable } from "@/hooks/use-category-table";
 
 import { CategoryRowActions } from "./CategoryRowActions";
@@ -19,7 +19,7 @@ import { DeleteCategoryDialog } from "./DeleteCategoryDialog";
 import { EditCategoryDialog } from "./EditCategoryDialog";
 
 type CategoriesTableProps = {
-  categories: CategoryModel[];
+  categories: Category[];
 };
 
 export function CategoriesTable({ categories }: CategoriesTableProps) {

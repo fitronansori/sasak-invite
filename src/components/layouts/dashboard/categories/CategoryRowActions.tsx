@@ -10,12 +10,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 type CategoryRowActionsProps = {
-  category: CategoryModel;
-  onEdit: (category: CategoryModel) => void;
-  onDelete: (category: CategoryModel) => void;
+  category: Category;
+  onEdit: (category: Category) => void;
+  onDelete: (category: Category) => void;
 };
 
 export function CategoryRowActions({

@@ -40,8 +40,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { createOrder } from "@/actions/dash-order-action";
 import { getAllTemplates } from "@/actions/dash-template-action";
-import { OrderStatus } from "@/generated/prisma/enums";
-import type { TemplateModel } from "@/generated/prisma/models";
+import { OrderStatus, type Template } from "@/generated/prisma";
 
 const statusLabels: Record<OrderStatus, string> = {
   PENDING: "Menunggu",
@@ -99,7 +98,7 @@ type CreateOrderFormValues = z.infer<typeof createOrderFormSchema>;
 export function CreateOrderDialog() {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [templates, setTemplates] = useState<TemplateModel[]>([]);
+  const [templates, setTemplates] = useState<Template[]>([]);
   const [loadingTemplates, setLoadingTemplates] = useState(false);
 
   const form = useForm<CreateOrderFormValues>({

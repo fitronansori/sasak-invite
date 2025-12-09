@@ -1,10 +1,10 @@
 import { CreateTemplateDialog } from "@/components/layouts/dashboard/templates/CreateTemplateDialog";
 import { TemplateFilters } from "@/components/layouts/dashboard/templates/TemplateFilters";
 
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 
 type TemplatesHeaderActionsProps = {
-  categories: CategoryModel[];
+  categories: Category[];
   onSearchChange: (query: string) => void;
   onCategoryChange: (categoryId: string) => void;
   onStatusChange: (status: string) => void;

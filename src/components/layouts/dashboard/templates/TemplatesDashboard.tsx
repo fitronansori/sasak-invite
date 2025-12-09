@@ -5,7 +5,7 @@ import { TemplatesContent } from "@/components/layouts/dashboard/templates/Templ
 import { TemplatesHeaderActions } from "@/components/layouts/dashboard/templates/TemplatesHeaderActions";
 
 import type { TemplateWithCategory } from "@/actions/dash-template-action";
-import type { CategoryModel } from "@/generated/prisma/models";
+import type { Category } from "@/generated/prisma";
 import { useTemplatesActions } from "@/hooks/use-templates-actions";
 
 type TemplatesDashboardProps = {
@@ -16,7 +16,7 @@ type TemplatesDashboardProps = {
     total: number;
     totalPages: number;
   };
-  categories: CategoryModel[];
+  categories: Category[];
   stats: {
     total: number;
     active: number;
